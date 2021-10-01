@@ -32,6 +32,7 @@ if (isset($_POST['from']))
         // y la formateamos con la funcion _formatear
         $orderDate2                      = date('d/m/Y H:i:s', strtotime($_POST['to']));
         $final_normal  = $orderDate2;
+        
 
         // Recibimos los demas datos desde el form
         $titulo = evaluar($_POST['title']);
