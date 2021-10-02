@@ -16,6 +16,14 @@ class Agenda extends Migration
         Schema::create('agenda', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('body');
+            $table->string('url');
+            $table->string('class');
+            $table->string('start');
+            $table->string('end');
+            $table->string('inicio_normal');
+            $table->string('celular');
+            $table->id('use_id');
             $table->timestamps();
         });
     }
