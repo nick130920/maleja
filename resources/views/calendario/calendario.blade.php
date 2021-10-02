@@ -47,8 +47,7 @@ if (isset($_POST['from']))
         $query="INSERT INTO agenda VALUES(null,'$titulo','$body','',$clase','$inicio','$final','$inicio_normal','$final_normal')";
 
         // Ejecutamos nuestra sentencia sql
-       $conexion->query($query)or die('<script type="text/javascript">alert("Horario No Disponible ")</script>');
-
+        $conexion->query($query)or die('<script type="text/javascript">alert("No inserto en la db")</script>');
         header("Location:$base_url");
 
 
@@ -75,6 +74,7 @@ if (isset($_POST['from']))
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <title>Calendario</title>
@@ -90,15 +90,16 @@ if (isset($_POST['from']))
 
 </head>
 </head>
+
 <body style="background: white;">
     <div class="container">
         <div class="row">
             <!--<div class="page-header"><h4></h4></div>-->
             <div class="pull-left form-inline"><br>
                 <div class="btn-group">
-                    <button class="btn btn-primary" data-calendar-nav="prev"><i class="fa fa-arrow-left"></i>  </button>
+                    <button class="btn btn-primary" data-calendar-nav="prev"><i class="fa fa-arrow-left"></i> </button>
                     <button class="btn" data-calendar-nav="today">Hoy</button>
-                    <button class="btn btn-primary" data-calendar-nav="next"><i class="fa fa-arrow-right"></i>  </button>
+                    <button class="btn btn-primary" data-calendar-nav="next"><i class="fa fa-arrow-right"></i> </button>
                 </div>
                 <div class="btn-group">
                     <button class="btn btn-warning" data-calendar-view="year">Año</button>
@@ -120,8 +121,9 @@ if (isset($_POST['from']))
         <div class="modal fade" id="events-modal">
             <div class="modal-dialog">
                 <div class="modal-content">
-                       <div class="modal-header">
-                        <a href="#" data-dismiss="modal" style="float: right;"> <i class="glyphicon glyphicon-remove "></i> </a>
+                    <div class="modal-header">
+                        <a href="#" data-dismiss="modal" style="float: right;"> <i
+                                class="glyphicon glyphicon-remove "></i> </a>
                         <br>
                     </div>
                     <div class="modal-body" style="height: 400px">
@@ -241,60 +243,74 @@ if (isset($_POST['from']))
                     calendar.view();
                 });
             }(jQuery));
-        </script>
+    </script>
 
-        <div class="modal fade" id="add_evento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-          <div class="modal-dialog">
+    <div class="modal fade" id="add_evento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="false">
+        <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Agregar nuevo evento</h4>
-            </div>
-            <div class="modal-body">
-                <form action="" method="post">
-                    <label for="from">Inicio</label>
-                    <div class='input-group date' id='from'>
-                        <input type='text' id="from" name="from" class="form-control" readonly />
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </div>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Agregar nuevo evento</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post">
+                        <label for="from">Inicio</label>
+                        <div class='input-group date' id='from'>
+                            <input type='text' id="from" name="from" class="form-control" readonly />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                        </div>
 
-                    <br>
+                        <br>
 
-                    <label for="to">Final</label>
-                    <div class='input-group date' id='to'>
-                        <input type='text' name="to" id="to" class="form-control" readonly />
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </div>
+                        <label for="to">Final</label>
+                        <div class='input-group date' id='to'>
+                            <input type='text' name="to" id="to" class="form-control" readonly />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                        </div>
 
-                 <br>
+                        <br>
 
-                    <label for="class">Tipo servicio</label>
-                    <select class="form-control" name="class" id="">
-                        <option></option>
-                        <option >corte de dama </option>
-                        <option >corte de niños</option>
-                        <option >corte de caballeros</option>
-                        <option >pedicure</option>
-                        <option >manicure</option>
-                         <option >Depilacion con cera </option>
-                        <option >Maquillaje</option>
-                        <option >Trenza</option>
-                        <option >peinado niñas </option>
-                        <option >peinado damas </option>
-                         <option >planchados</option>
-                        <option >cepillado</option>
-                        <option >Keratina </option>
-                        <option >Tintes</option>
-                        <option >semipermanentes</option>
-                    </select>
-                    <br>
-                    <label for="title">Título</label>
-                    <input type="text" required autocomplete="off" name="title" class="form-control" id="title" placeholder="Introduce un título">
-                    <br>
-                    <label for="body">Evento</label>
-                    <textarea id="body" name="event" required class="form-control" rows="3"></textarea>
+                        <label for="class">Tipo servicio</label>
+                        <select class="form-control" name="class" id="">
+                            <option></option>
+                            <option>corte de dama </option>
+                            <option>corte de niños</option>
+                            <option>corte de caballeros</option>
+                            <option>pedicure</option>
+                            <option>manicure</option>
+                            <option>Depilacion con cera </option>
+                            <option>Maquillaje</option>
+                            <option>Trenza</option>
+                            <option>peinado niñas </option>
+                            <option>peinado damas </option>
+                            <option>planchados</option>
+                            <option>cepillado</option>
+                            <option>Keratina </option>
+                            <option>Tintes</option>
+                            <option>semipermanentes</option>
+                        </select>
 
-                    <script type="text/javascript">
-                        $(function () {
+
+                        <br>
+
+
+
+
+
+
+
+                        <label for="title">Título</label>
+                        <input type="text" required autocomplete="off" name="title" class="form-control" id="title"
+                            placeholder="Introduce un título">
+
+                        <br>
+
+
+                        <label for="body">Evento</label>
+                        <textarea id="body" name="event" required class="form-control" rows="3"></textarea>
+
+                        <script type="text/javascript">
+                            $(function () {
                             $('#from').datetimepicker({
                                 language: 'es',
                                 minDate: new Date()
@@ -305,15 +321,17 @@ if (isset($_POST['from']))
                             });
 
                         });
-                    </script>
+                        </script>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                  <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Agregar</button>
-              </form>
-          </div>
-      </div>
-  </div>
-</div>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>
+                        Cancelar</button>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Agregar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
