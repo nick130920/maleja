@@ -30,3 +30,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Auth::routes();
+
+route::resource('servicios',App\Http\Controllers\ServicioController:: class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
