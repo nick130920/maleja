@@ -31,14 +31,18 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                   @if (auth::check())
+
                     <ul class="navbar-nav mr-auto">
+                    <a class="nav-link"href="{{route('servicios.index')"}}>{{ __('servicios')}}</a>
 
                     </ul>
+                    @endif 
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
