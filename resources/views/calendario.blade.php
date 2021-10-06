@@ -1,105 +1,28 @@
-<?php
-
-
-// Definimos nuestra zona horaria
-date_default_timezone_set("America/Bogota");
-// incluimos el archivo de funciones
-include 'funciones.php';
-
-// incluimos el archivo de configuracion
-include 'config.php';
-
-// Verificamos si se ha enviado el campo con name from
-if (isset($_POST['from']))
-{
-
-    // Si se ha enviado verificamos que no vengan vacios
-    if ($_POST['from']!="" AND $_POST['to']!="")
-    {
-
-        // Recibimos el fecha de inicio y la fecha final desde el form
-        $Datein                    = date('d/m/Y H:i:s', strtotime($_POST['from']));
-        $Datefi                    = date('d/m/Y H:i:s', strtotime($_POST['to']));
-        $inicio = _formatear($Datein);
-        // y la formateamos con la funcion _formatear
-
-        $final  = _formatear($Datefi);
-
-        // Recibimos el fecha de inicio y la fecha final desde el form
-        $orderDate                      = date('d/m/Y H:i:s', strtotime($_POST['from']));
-        $inicio_normal = $orderDate;
-
-        // y la formateamos con la funcion _formatear
-        $orderDate2                      = date('d/m/Y H:i:s', strtotime($_POST['to']));
-        $final_normal  = $orderDate2;
-
-
-        // Recibimos los demas datos desde el form
-        $titulo = evaluar($_POST['title']);
-
-        // y con la funcion evaluar
-        $body   = evaluar($_POST['event']);
-
-        // reemplazamos los caracteres no permitidos
-        $clase  = evaluar($_POST['class']);
-
-        // insertamos el evento
-        $query="INSERT INTO agenda VALUES(null,'$titulo','$body','',$clase','$inicio','$final','$inicio_normal','$final_normal')";
-
-        // Ejecutamos nuestra sentencia sql
-        $conexion->query($query)or die('<script type="text/javascript">alert("No inserto en la db")</script>');
-        header("Location:$base_url");
-
-
-        // Obtenemos el ultimo id insetado
-        $im=$conexion->query("SELECT MAX(id) AS id FROM agenda");
-        $row = $im->fetch_row();
-        $id = trim($row[0]);
-
-        // para generar el link del evento
-        $link = "$base_url"."descripcion_evento.php?id=$id";
-
-        // y actualizamos su link
-        $query="UPDATE agenda SET url = '$link' WHERE id = $id";
-
-        // Ejecutamos nuestra sentencia sql
-        $conexion->query($query);
-
-        // redireccionamos a nuestro calendario
-        //header("Location:$base_url");
-    }
-}
-
-?>
-
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="utf-8">
-    <title>Calendario</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/calendar.css">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <script type="text/javascript" src="js/es-ES.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/moment.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-datetimepicker.js"></script>
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
-
-</head>
-</head>
-
-<body style="background: white;">
+@push("scripts")
+    <!--Scripts Calendario-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/calendar.css') }}">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ asset('js/es-ES.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/moment.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" />
+    <!--Scripts Calendario-->
+@endpush
+@section("calendario")
+<!--Section Calendario-->
     <div class="container">
         <div class="row">
             <!--<div class="page-header"><h4></h4></div>-->
             <div class="pull-left form-inline"><br>
                 <div class="btn-group">
-                    <button class="btn btn-primary" data-calendar-nav="prev"><i class="fa fa-arrow-left"></i> </button>
+                    <button class="btn btn-primary" data-calendar-nav="prev"><i class="fa fa-arrow-left"></i>
+                    </button>
                     <button class="btn" data-calendar-nav="today">Hoy</button>
-                    <button class="btn btn-primary" data-calendar-nav="next"><i class="fa fa-arrow-right"></i> </button>
+                    <button class="btn btn-primary" data-calendar-nav="next"><i class="fa fa-arrow-right"></i>
+                    </button>
                 </div>
                 <div class="btn-group">
                     <button class="btn btn-warning" data-calendar-view="year">Año</button>
@@ -123,7 +46,8 @@ if (isset($_POST['from']))
                 <div class="modal-content">
                     <div class="modal-header">
                         <a href="#" data-dismiss="modal" style="float: right;"> <i
-                                class="glyphicon glyphicon-remove "></i> </a>
+                                class="glyphicon glyphicon-remove "></i>
+                        </a>
                         <br>
                     </div>
                     <div class="modal-body" style="height: 400px">
@@ -134,9 +58,8 @@ if (isset($_POST['from']))
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
     </div>
-
-    <script src="js/underscore-min.js"></script>
-    <script src="js/calendar.js"></script>
+    <script src="{{ asset('js/underscore-min.js') }}"></script>
+    <script src="{{ asset('js/calendar.js') }}"></script>
     <script type="text/javascript">
         (function($){
                 //creamos la fecha actual
@@ -244,7 +167,6 @@ if (isset($_POST['from']))
                 });
             }(jQuery));
     </script>
-
     <div class="modal fade" id="add_evento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="false">
         <div class="modal-dialog">
@@ -253,25 +175,20 @@ if (isset($_POST['from']))
                     <h4 class="modal-title" id="myModalLabel">Agregar nuevo evento</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="post">
-                        <label for="from">Inicio</label>
-                        <div class='input-group date' id='from'>
-                            <input type='text' id="from" name="from" class="form-control" readonly />
+                    <form action="/calendar" method="POST">
+                        @csrf
+                        <label for="start">Inicio</label>
+                        <div class='input-group date' id='start'>
+                            <input type='text' id="start" name="start" class="form-control" required readonly />
                             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                         </div>
-
                         <br>
-
-                        <label for="to">Final</label>
-                        <div class='input-group date' id='to'>
-                            <input type='text' name="to" id="to" class="form-control" readonly />
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                        </div>
-
+                        <label for="phone_number">Celular</label>
+                        <input type='number' name="phone_number" id="phone_number" class="form-control"
+                            placeholder="3124567890" />
                         <br>
-
                         <label for="class">Tipo servicio</label>
-                        <select class="form-control" name="class" id="">
+                        <select class="form-control" name="type" required>
                             <option></option>
                             <option>corte de dama </option>
                             <option>corte de niños</option>
@@ -289,37 +206,19 @@ if (isset($_POST['from']))
                             <option>Tintes</option>
                             <option>semipermanentes</option>
                         </select>
-
-
                         <br>
-
-
-
-
-
-
-
                         <label for="title">Título</label>
                         <input type="text" required autocomplete="off" name="title" class="form-control" id="title"
                             placeholder="Introduce un título">
-
                         <br>
-
-
                         <label for="body">Evento</label>
                         <textarea id="body" name="event" required class="form-control" rows="3"></textarea>
-
                         <script type="text/javascript">
                             $(function () {
-                            $('#from').datetimepicker({
+                            $('#start').datetimepicker({
                                 language: 'es',
                                 minDate: new Date()
                             });
-                            $('#to').datetimepicker({
-                                language: 'es',
-                                minDate: new Date()
-                            });
-
                         });
                         </script>
                 </div>
@@ -332,6 +231,5 @@ if (isset($_POST['from']))
             </div>
         </div>
     </div>
-</body>
-
-</html>
+<!--Section Calendario-->
+@endsection
