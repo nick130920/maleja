@@ -14,13 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
 
+Route::get('index', function () {
+   return view('index');
+})->name('index');
+
+
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
 Auth::routes();
 
-route::resource('servicios',App\Http\Controllers\ServicioController:: class)
-->middleware('auth');
+route::resource('servicios',App\Http\Controllers\ServicioController:: class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
