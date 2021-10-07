@@ -14,10 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 
+<<<<<<< HEAD
 Route::get('index', function () {
    return view('index');
 })->name('index');
@@ -30,3 +31,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+=======
+Auth::routes();
+
+route::resource('servicios',App\Http\Controllers\ServicioController:: class)
+->middleware('auth');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+>>>>>>> parent of 8a95ab1 (Revert "crud")
