@@ -14,15 +14,15 @@ class Servicios extends Migration
     public function up()
     {
         //
-     
-        Schema::create('servicios', function(Blueprint $table){
+    } 
+        Schema::create('servicios',function(Blueprint $ table){
 
               $table->bigIncrements('id');   
-             $table->string('image');
+             $table->string('imagenes');
               $table->timestamps(); 
 
           }); 
-      }
+
     /**
      * Reverse the migrations.
      *
