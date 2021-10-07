@@ -175,44 +175,44 @@
                     <h4 class="modal-title" id="myModalLabel">Agregar nuevo evento</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="/calendar" method="POST">
+                    <form action="{{ route('calendar') }}" method="POST">
                         @csrf
                         <label for="start">Inicio</label>
                         <div class='input-group date' id='start'>
-                            <input type='text' id="start" name="start" class="form-control" required readonly />
+                            <input type='text' id="start" :value="old('start')" name="start" class="form-control" required />
                             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                         </div>
                         <br>
                         <label for="phone_number">Celular</label>
-                        <input type='number' name="phone_number" id="phone_number" class="form-control"
+                        <input type='number' name="phone_number" :value="old('phone_number')" id="phone_number" class="form-control"
                             placeholder="3124567890" />
                         <br>
                         <label for="class">Tipo servicio</label>
-                        <select class="form-control" name="type" required>
+                        <select class="form-control" name="service_id" :value="old('service_id')" required>
                             <option></option>
-                            <option>corte de dama </option>
-                            <option>corte de niños</option>
-                            <option>corte de caballeros</option>
-                            <option>pedicure</option>
-                            <option>manicure</option>
-                            <option>Depilacion con cera </option>
-                            <option>Maquillaje</option>
-                            <option>Trenza</option>
-                            <option>peinado niñas </option>
-                            <option>peinado damas </option>
-                            <option>planchados</option>
-                            <option>cepillado</option>
-                            <option>Keratina </option>
-                            <option>Tintes</option>
-                            <option>semipermanentes</option>
+                            <option value="1">corte de dama </option>
+                            <option value="2">corte de niños</option>
+                            <option value="3">corte de caballeros</option>
+                            <option value="4">pedicure</option>
+                            <option value="5">manicure</option>
+                            <option value="6">Depilacion con cera </option>
+                            <option value="7">Maquillaje</option>
+                            <option value="8">Trenza</option>
+                            <option value="9">peinado niñas </option>
+                            <option value="10">peinado damas </option>
+                            <option value="11">planchados</option>
+                            <option value="12">cepillado</option>
+                            <option value="13">Keratina </option>
+                            <option value="14">Tintes</option>
+                            <option value="15">semipermanentes</option>
                         </select>
                         <br>
                         <label for="title">Título</label>
-                        <input type="text" required autocomplete="off" name="title" class="form-control" id="title"
+                        <input type="text" required :value="old('title')" name="title" class="form-control" id="title"
                             placeholder="Introduce un título">
                         <br>
                         <label for="body">Evento</label>
-                        <textarea id="body" name="event" required class="form-control" rows="3"></textarea>
+                        <textarea id="body" name="event" :value="old('event')" required class="form-control" rows="3"></textarea>
                         <script type="text/javascript">
                             $(function () {
                             $('#start').datetimepicker({

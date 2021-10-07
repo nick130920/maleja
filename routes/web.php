@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
     Route::get('/calendar', [CalendarController::class, 'index']);
-    Route::post('/calendar', [CalendarController::class, 'create']);
+    Route::post('/calendar', [CalendarController::class, 'create'])->name('calendar');
 });
 
 require __DIR__.'/auth.php';
