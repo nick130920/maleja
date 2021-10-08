@@ -5,11 +5,11 @@
 // Datos de conexion a la base de datos
 $servidor='localhost';
 $usuario='root';
-$pass='';
+$pass='nicolas1309';
 $bd='salon';
 
 // Nos conectamos a la base de datos
-$conexion = new mysqli($servidor, $usuario, $pass, $bd);	
+$conexion = new mysqli($servidor, $usuario, $pass, $bd);
 
 // Definimos que nuestros datos vengan en utf8
 $conexion->set_charset('utf8');
