@@ -29,6 +29,12 @@ Route::middleware(['auth'])->group(function () {
     })->name('dashboard');
     Route::get('/calendar', [CalendarController::class, 'index']);
     Route::post('/calendar', [CalendarController::class, 'create'])->name('calendar');
+    Route::get('/services',[ServicioController::class, 'index']);
+
 });
+
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 require __DIR__.'/auth.php';
