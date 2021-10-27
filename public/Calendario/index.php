@@ -122,7 +122,7 @@ if (isset($_POST['from'])) {
                         <a href="#" data-dismiss="modal" style="float: right;"> <i class="glyphicon glyphicon-remove "></i> </a>
                         <br>
                     </div>
-                    <div class="modal-body" style="height: 400px">
+                    <div class="modal-body" style="height: 1000px">
                         <p>One fine body&hellip;</p>
                     </div>
 
@@ -271,10 +271,10 @@ if (isset($_POST['from'])) {
                             <option>semipermanentes</option>
                         </select>
                         <br>
-                        <label for="title">Título</label>
-                        <input type="text" required autocomplete="off" name="title" class="form-control" id="title" placeholder="Introduce un título">
+                        <label for="nombre">Título</label>
+                        <input type="text" required autocomplete="off" name="nombre" class="form-control" id="nombre" placeholder="Introduce un nombre">
                         <br>
-                        <label for="body">Evento</label>
+                        <label for="body">nota</label>
                         <textarea id="body" name="event" required class="form-control" rows="3"></textarea>
 
                         <script type="text/javascript">
