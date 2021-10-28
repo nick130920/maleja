@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	 @include('layouts.partials.head')
- <title>@yield('title')</title>
+  	@include('layouts.partials.head')
+ 	<title>@yield('title')</title>
   </head>
   <body>
   		@include('layouts.partials.navbar')

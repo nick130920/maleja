@@ -22634,7 +22634,7 @@ select {
 }
 
 .font-medium {
-  font-weight: 1000;
+  font-weight: 500;
 }
 
 .font-semibold {
@@ -22860,7 +22860,7 @@ select {
   color: rgba(55, 65, 81, var(--tw-text-opacity));
 }
 
-.text-gray-1000 {
+.text-gray-800 {
   --tw-text-opacity: 1;
   color: rgba(31, 41, 55, var(--tw-text-opacity));
 }

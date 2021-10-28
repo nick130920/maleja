@@ -1,18 +1,21 @@
-<x-app-layout>
-    @include('calendario')
-    <x-slot name="scripts">
+@extends('layouts.app')
+    @section('scripts')
+        Servicio
+    @endsection
 
-    </x-slot>
-    <x-slot name="header">
+    @section('header')
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Bienvenido') }}
         </h2>
-    </x-slot>
+    @endsection
+    
 
-    <div class="container">
-        {{-- <iframe style="width: 100%;box-shadow: none;border: none;height: 85vh;" src="{{URL::to('/Calendario/index.php')}}"></iframe> --}}
-        @yield("calendario")
-    </div>
+    @section('content')
+        <div class="container">
+            @include('calendario')
+        </div>
+    @endsection
+
 
     {{-- <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -20,4 +23,3 @@
             </div>
         </div>
     </div> --}}
-</x-app-layout>

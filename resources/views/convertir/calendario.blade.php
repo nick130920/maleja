@@ -16,35 +16,35 @@
 
 @section("content")
 <!--Section Calendario-->
-    <div class="container">
-        <div class="row">
+    <div class="container mx-auto sm:px-4">
+        <div class="flex flex-wrap ">
             <!--<div class="page-header"><h4></h4></div>-->
-            <div class="pull-left form-inline"><br>
-                <div class="btn-group">
-                    <button class="btn btn-primary" data-calendar-nav="prev"><i class="fa fa-arrow-left"></i>
+            <div class="pull-left flex items-center"><br>
+                <div class="relative inline-flex align-middle">
+                    <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600" data-calendar-nav="prev"><i class="fa fa-arrow-left"></i>
                     </button>
-                    <button class="btn" data-calendar-nav="today">Hoy</button>
-                    <button class="btn btn-primary" data-calendar-nav="next"><i class="fa fa-arrow-right"></i>
+                    <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline" data-calendar-nav="today">Hoy</button>
+                    <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600" data-calendar-nav="next"><i class="fa fa-arrow-right"></i>
                     </button>
                 </div>
-                <div class="btn-group">
-                    <button class="btn btn-warning" data-calendar-view="year">Año</button>
-                    <button class="btn btn-warning active" data-calendar-view="month">Mes</button>
-                    <button class="btn btn-warning" data-calendar-view="week">Semana</button>
-                    <button class="btn btn-warning" data-calendar-view="day">Dia</button>
+                <div class="relative inline-flex align-middle">
+                    <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-orange-400 text-black hover:bg-orange-500" data-calendar-view="year">Año</button>
+                    <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-orange-400 text-black hover:bg-orange-500 active" data-calendar-view="month">Mes</button>
+                    <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-orange-400 text-black hover:bg-orange-500" data-calendar-view="week">Semana</button>
+                    <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-orange-400 text-black hover:bg-orange-500" data-calendar-view="day">Dia</button>
                 </div>
             </div>
-            <div class="pull-right form-inline"><br>
-                <button class="btn btn-info" data-toggle='modal' data-target='#add_evento'>Añadir Evento</button>
+            <div class="pull-right flex items-center"><br>
+                <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-teal-500 text-white hover:bg-teal-600" data-toggle='modal' data-target='#add_evento'>Añadir Evento</button>
             </div>
         </div>
         <br><br><br>
-        <div class="row">
+        <div class="flex flex-wrap ">
             <div id="calendar"></div> <!-- Aqui se mostrara nuestro calendario -->
 
         </div>
         <!--ventana modal para el calendario-->
-        <div class="modal fade" id="events-modal">
+        <div class="modal opacity-0" id="events-modal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -170,7 +170,7 @@
                 });
             }(jQuery));
     </script>
-    <div class="modal fade" id="add_evento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <div class="modal opacity-0" id="add_evento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="false">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -181,17 +181,17 @@
                     <form action="{{ route('calendar') }}" method="POST">
                         @csrf
                         <label for="start">Inicio</label>
-                        <div class='input-group date' id='start'>
-                            <input type='text' id="start" :value="old('start')" name="start" class="form-control" required />
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                        <div class='relative flex items-stretch w-full date' id='start'>
+                            <input type='text' id="start" :value="old('start')" name="start" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded" required />
+                            <span class="py-1 px-2 mb-1 text-base font-normal leading-normal text-gray-900 text-center bg-gray-300 border border-4 border-gray-100 rounded"><span class="glyphicon glyphicon-calendar"></span>
                         </div>
                         <br>
                         <label for="phone_number">Celular</label>
-                        <input type='number' name="phone_number" :value="old('phone_number')" id="phone_number" class="form-control"
+                        <input type='number' name="phone_number" :value="old('phone_number')" id="phone_number" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
                             placeholder="3124567890" />
                         <br>
                         <label for="class">Tipo servicio</label>
-                        <select class="form-control" name="service_id" :value="old('service_id')" required>
+                        <select class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded" name="service_id" :value="old('service_id')" required>
                             <option></option>
                             <option value="1">corte de dama</option>
                             <option value="2">corte de niños</option>
@@ -211,11 +211,11 @@
                         </select>
                         <br>
                         <label for="title">Título</label>
-                        <input type="text" required :value="old('title')" name="title" class="form-control" id="title"
+                        <input type="text" required :value="old('title')" name="title" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded" id="title"
                             placeholder="Introduce un título">
                         <br>
                         <label for="body">Evento</label>
-                        <textarea id="body" name="event" :value="old('event')" required class="form-control" rows="3"></textarea>
+                        <textarea id="body" name="event" :value="old('event')" required class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded" rows="3"></textarea>
                         <script type="text/javascript">
                             $(function () {
                             $('#start').datetimepicker({
@@ -226,9 +226,9 @@
                         </script>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>
+                    <button type="button" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-red-600 text-white hover:bg-red-700" data-dismiss="modal"><i class="fa fa-times"></i>
                         Cancelar</button>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Agregar</button>
+                    <button type="submit" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-green-500 text-white hover:bg-green-600"><i class="fa fa-check"></i> Agregar</button>
                     </form>
                 </div>
             </div>

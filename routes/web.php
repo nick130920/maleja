@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\HomeController;
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,17 +28,20 @@ Route::get('/index', function () {
 })->name('index');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->name('dashboard');
     Route::get('/calendar', [CalendarController::class, 'index']);
     Route::post('/calendar', [CalendarController::class, 'create'])->name('calendar');
-    Route::get('/services',[ServicioController::class, 'index']);
-
+    // Route::get('/services',[ServicioController::class, 'index']);
+    Route::resource('/services', ServiceController::class);
 });
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
