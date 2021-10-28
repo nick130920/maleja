@@ -26,9 +26,6 @@
     // Fecha inicio
     $inicio=$row['inicio_normal'];
 
-    // Fecha Termino
-    $final=$row['final_normal'];
-
    // tipo servicio
     $class=$row['class'];
 
@@ -63,8 +60,7 @@ if (isset($_POST['eliminar_evento']))
 	 <h3><?=$titulo?></h3>
 	 <hr>
      <b>Fecha inicio:</b> <?=$inicio?> <br>
-     <b>final:</b> <?=$final?>  <br>
-     <b>Tipo de servicio:</b> <?=$class?> <br>
+    <b>Tipo de servicio:</b> <?=$class?> <br>
     <b>Descricion:</b><p><?=$evento?></p>
      
 </body>

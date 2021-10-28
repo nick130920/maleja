@@ -35,7 +35,7 @@ CREATE TABLE `agenda` (
   `start` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `end` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `inicio_normal` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `final_normal`varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+ 
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `agenda` (
 ALTER TABLE `agenda`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `inicio_normal` (`inicio_normal`),
-  ADD UNIQUE KEY `final_normal` (`final_normal`),
+
   ADD UNIQUE KEY `class` (`class`),
   
 
