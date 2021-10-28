@@ -5,7 +5,7 @@
 // Datos de conexion a la base de datos
 $servidor='localhost';
 $usuario='root';
-$pass='nicolas1309';
+$pass='';
 $bd='salon';
 
 // Nos conectamos a la base de datos
