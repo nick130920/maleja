@@ -27,6 +27,14 @@
 
 </head>
 <body>
+    @if ($message = Session::get('success'))
+        <script type="text/javascript">
+            window.onload = function alerta() {
+                alertify.set('notifier','position', 'top-right');
+                alertify.notify ("{{ $message }}",'success', 4, function(){});
+            };
+        </script>
+    @endif
     @if ($errors->any())
     <script type="text/javascript">
         window.onload = function alerta() {

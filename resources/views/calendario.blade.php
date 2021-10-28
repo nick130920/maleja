@@ -191,7 +191,9 @@
                         <br>
                         <label for="class">Tipo servicio</label>
                         <select class="form-control" name="service_id" :value="old('service_id')" required>
-                            <option></option>
+                            @foreach ($servicios as $servicio)
+                                <option>{{ $servicio->name  }} {{$servicio->time}}</option>
+                            @endforeach
                             <option value="1">corte de dama</option>
                             <option value="2">corte de niños</option>
                             <option value="3">corte de caballeros</option>

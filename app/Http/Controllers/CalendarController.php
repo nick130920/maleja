@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Validator;
 class CalendarController extends Controller
 {
     public function index(){
-        return view('/calendario');
+        $servicios = Service::all();
+        return view('/calendario', compact('servicios'));
     }
     public function prueba(){
         return view('/convertir/calendario');
