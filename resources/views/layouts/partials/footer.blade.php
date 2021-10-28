@@ -17,27 +17,27 @@
 
           <div class="contact-info">
             <div class="col-md-5">
-              
+
               <ul>
                 <li><i class="fa fa-home fa-2x"></i> Cra.9 #23-100 campoalegre (Huila)</li>
                 <li><i class="fa fa-phone fa-2x"></i> +573133329614</li>
                 <li><i class="fa fa-envelope fa-2x"></i>Maleja.oficial07@gmail.com </li>
-                
-              </ful>
+
+              </ul>
             </div>
           </div>
         </div>
       </div>
 
-     
+
             </form>
           </div>
         </div>
       </div>
 
     </section>
-     
-    
+
+
     <!--footer-->
     <section class="footer" id="footer">
       <p class="text-center">
@@ -51,9 +51,9 @@
           <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
           <li><a href="#"><i class="fa fa-flickr"></i></a></li>
         </ul>
-       
-     
-         
+
+
+
         </div>
       </div>
     </section>

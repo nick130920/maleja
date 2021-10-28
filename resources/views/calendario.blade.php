@@ -2,13 +2,12 @@
 
 @push("scripts")
     <!--Scripts Calendario-->
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}"> --}}
+
     <link rel="stylesheet" href="{{ asset('css/calendar.css') }}">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ asset('js/es-ES.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" />
     <!--Scripts Calendario-->

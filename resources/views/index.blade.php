@@ -279,34 +279,34 @@
 </script>
 <script type="text/javascript">
     jQuery(function($) {
-    $(document).ready(function() {
-    //enabling stickUp on the '.navbar-wrapper' class
-    $('.navbar-wrapper').stickUp({
-        parts: {
-        0: 'banner',
-        1: 'aboutus',
-        2: 'specialties',
-        3: 'gallery',
-        4: 'feedback',
-        5: 'contact'
-        },
-        itemClass: 'menuItem',
-        itemHover: 'active',
-        topMargin: 'auto'
-    });
-    });
-    window.onscroll = function() {myFunction()};
+    // $(document).ready(function() {
+    // //enabling stickUp on the '.navbar-wrapper' class
+    // $('.navbar-wrapper').stickUp({
+    //     parts: {
+    //     0: 'banner',
+    //     1: 'aboutus',
+    //     2: 'specialties',
+    //     3: 'gallery',
+    //     4: 'feedback',
+    //     5: 'contact'
+    //     },
+    //     itemClass: 'menuItem',
+    //     itemHover: 'active',
+    //     topMargin: 'auto'
+    // });
+    // });
+    // window.onscroll = function() {myFunction()};
 
-    var navbar = document.getElementById("navbar");
-    var sticky = navbar.offsetTop;
+    // var navbar = document.getElementById("navbar");
+    // var sticky = navbar.offsetTop;
 
-    function myFunction() {
-    if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-    } else {
-    navbar.classList.remove("sticky");
-    }
-    }
+    // function myFunction() {
+    // if (window.pageYOffset >= sticky) {
+    // navbar.classList.add("sticky")
+    // } else {
+    // navbar.classList.remove("sticky");
+    // }
+    // }
     //Google Map
     var get_latitude = $('#google-map').data('latitude');
     var get_longitude = $('#google-map').data('longitude');

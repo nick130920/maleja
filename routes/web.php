@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 
@@ -28,18 +28,11 @@ Route::get('/index', function () {
 })->name('index');
 
 Route::middleware(['auth'])->group(function () {
-    // Route::get('/dashboard', function () {
-    //     return view('dashboard');
-    // })->name('dashboard');
     Route::get('/calendar', [CalendarController::class, 'index']);
+    Route::get('/convertir', [CalendarController::class, 'prueba']);
     Route::post('/calendar', [CalendarController::class, 'create'])->name('calendar');
-    // Route::get('/services',[ServicioController::class, 'index']);
     Route::resource('/services', ServiceController::class);
 });
-
-
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 require __DIR__.'/auth.php';
 

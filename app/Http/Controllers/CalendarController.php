@@ -15,6 +15,9 @@ class CalendarController extends Controller
     public function index(){
         return view('/calendario');
     }
+    public function prueba(){
+        return view('/convertir/calendario');
+    }
 
     public function create(Request $request){
         $user_id = FacadesAuth::user()->id;

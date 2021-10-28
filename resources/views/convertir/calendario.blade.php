@@ -16,7 +16,7 @@
 
 @section("content")
 <!--Section Calendario-->
-    <div class="container mx-auto sm:px-4">
+    <div class="container mx-auto sm:px-4 mx-auto sm:px-4">
         <div class="flex flex-wrap ">
             <!--<div class="page-header"><h4></h4></div>-->
             <div class="pull-left flex items-center"><br>
