@@ -24,7 +24,7 @@
                         <li class="menuItem"><a href="#specialties">SERVICIOS</a></li>
                         <li class="menuItem"><a href="#gallery">PRODUCTOS</a></li>
                         <li class="menuItem"><a href="#contact">CONTACTOS</a></li>
-                        <li class="menuItem"><a href="{{route('register')}}"> CITAS </a></li>
+                        <li class="menuItem"><a href="{{route('calendar')}}"> CITAS </a></li>
                       </ul>
                     </div>
                   </div>
