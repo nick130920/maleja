@@ -14,10 +14,12 @@ class CalendarController extends Controller
 {
     public function index(){
         $servicios = Service::all();
-        return view('/calendario', compact('servicios'));
+        $citas = Calendar::all();
+
+        return view('/calendario', compact('servicios', 'citas'));
     }
     public function prueba(){
-        return view('/convertir/calendario');
+        return view('/simple');
     }
 
     public function create(Request $request){

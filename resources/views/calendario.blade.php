@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             <!--<div class="page-header"><h4></h4></div>-->
-            <div class="pull-left form-inline"><br>
+            <div class="float-xs-start form-inline"><br>
                 <div class="btn-group">
                     <button class="btn btn-primary" data-calendar-nav="prev"><i class="fa fa-arrow-left"></i>
                     </button>
@@ -33,8 +33,8 @@
                     <button class="btn btn-warning" data-calendar-view="day">Dia</button>
                 </div>
             </div>
-            <div class="pull-right form-inline"><br>
-                <button class="btn btn-info" data-toggle='modal' data-target='#add_evento'>Añadir Evento</button>
+            <div class="float-xs-end form-inline"><br>
+                <button class="btn btn-info" data-bs-toggle='modal' data-bs-target='#add_evento'>Añadir Evento</button>
             </div>
         </div>
         <br><br><br>
@@ -47,7 +47,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <a href="#" data-dismiss="modal" style="float: right;"> <i
+                        <a href="#" data-bs-dismiss="modal" style="float: right;"> <i
                                 class="glyphicon glyphicon-remove "></i>
                         </a>
                         <br>
@@ -70,6 +70,7 @@
                 var mm = (date.getMonth()+1).toString().length == 1 ? "0"+(date.getMonth()+1).toString() : (date.getMonth()+1).toString();
                 var dd  = (date.getDate()).toString().length == 1 ? "0"+(date.getDate()).toString() : (date.getDate()).toString();
 
+                var citas = @json($citas);
                 //establecemos los valores del calendario
                 var options = {
 
@@ -179,20 +180,29 @@
                 <div class="modal-body">
                     <form action="{{ route('calendar') }}" method="POST">
                         @csrf
-                        <label for="start">Inicio</label>
+                        <label for="start" class="form-label">Inicio</label>
                         <div class='input-group date' id='start'>
-                            <input type='text' id="start" :value="old('start')" name="start" class="form-control" required />
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                            <input type='text' id="start" :value="old('start')" name="start" class="form-control" aria-label="Recipient" aria-describedby="basicoo" required />
+                            {{-- <span id="basic-addon2" class="input-group-addon"><span  class="glyphicon glyphicon-calendar"></span> --}}
+                            <span class="input-group-text" id="basicoo">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-week-fill"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM9.5 7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm3 0h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zM2 10.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z">
+                                    </path>
+                                </svg>
+                            </span>
                         </div>
                         <br>
-                        <label for="phone_number">Celular</label>
+                        <label for="phone_number" class="form-label">Celular</label>
                         <input type='number' name="phone_number" :value="old('phone_number')" id="phone_number" class="form-control"
                             placeholder="3124567890" />
                         <br>
-                        <label for="class">Tipo servicio</label>
-                        <select class="form-control" name="service_id" :value="old('service_id')" required>
+                        <label for="class" class="form-label">Tipo servicio</label>
+                        <select class="form-select" aria-label="Default select example" name="service_id" :value="old('service_id')" required>
+                            <option></option>
                             @foreach ($servicios as $servicio)
-                                <option>{{ $servicio->name  }} {{$servicio->time}}</option>
+                                <option value={{ $servicio->id  }}>{{ $servicio->name  }} {{$servicio->time}}</option>
                             @endforeach
                             <option value="1">corte de dama</option>
                             <option value="2">corte de niños</option>
@@ -211,11 +221,11 @@
                             <option value="15">semipermanentes</option>
                         </select>
                         <br>
-                        <label for="title">Título</label>
+                        <label for="title" class="form-label">Título</label>
                         <input type="text" required :value="old('title')" name="title" class="form-control" id="title"
                             placeholder="Introduce un título">
                         <br>
-                        <label for="body">Evento</label>
+                        <label for="body" class="form-label">Evento</label>
                         <textarea id="body" name="event" :value="old('event')" required class="form-control" rows="3"></textarea>
                         <script type="text/javascript">
                             $(function () {
@@ -227,7 +237,7 @@
                         </script>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa fa-times"></i>
                         Cancelar</button>
                     <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Agregar</button>
                     </form>

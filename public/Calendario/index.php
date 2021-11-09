@@ -109,7 +109,7 @@ if (isset($_POST['from'])) {
                 <button class="btn btn-info" data-toggle='modal' data-target='#add_evento'>Añadir Evento</button>
             </div>
         </div>
-        <br><br><br>
+        <br><br>
         <div class="row">
             <div id="calendar"></div> <!-- Aqui se mostrara nuestro calendario -->
 

@@ -29,7 +29,7 @@ Route::get('/index', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/calendar', [CalendarController::class, 'index']);
-    Route::get('/convertir', [CalendarController::class, 'prueba']);
+    Route::get('/simple', [CalendarController::class, 'prueba']);
     Route::post('/calendar', [CalendarController::class, 'create'])->name('calendar');
     Route::resource('/services', ServiceController::class);
 });

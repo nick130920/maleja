@@ -20,7 +20,7 @@
                     <div class="navbar-collapse collapse">
                       <ul class="nav navbar-nav">
                         <li class="menuItem active"><a href="#wrapper">INICIO</a></li>
-                        <li class="menuItem"><a href="#aboutus">NOSOTRO</a></li>
+                        <li class="menuItem"><a href="#abodutus">NOSOTROS</a></li>
                         <li class="menuItem"><a href="#specialties">SERVICIOS</a></li>
                         <li class="menuItem"><a href="#gallery">PRODUCTOS</a></li>
                         <li class="menuItem"><a href="#contact">CONTACTOS</a></li>
