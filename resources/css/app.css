@@ -1,3 +1,10 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.bg-login{
+    background-image: url(../img/fondolegal.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
