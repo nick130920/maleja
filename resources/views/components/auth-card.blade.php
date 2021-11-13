@@ -1,9 +1,4 @@
-<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100" style="background-image: url('{{ asset('img/fondolegal.jpg')}}');">
-    <div>
-        
-    </div>
-
-    
+{{--tratar de nunca usar inline css--}}
+<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 bg-login">
         {{ $slot }}
-    </div>
 </div>
