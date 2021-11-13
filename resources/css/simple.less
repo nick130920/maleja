@@ -43,8 +43,8 @@
 @mq__smartphone: ~"(max-width: 1024px)";
 
 /* ===========================================================*/
-body { 
-  position: realative;
+body {
+  position: relative;
   height: 100%;
   &.overlay {
     &:before {
@@ -143,7 +143,7 @@ a {
 /* STYLE ===========================================================*/
 header {
   position: fixed;
-    height: @headerH; 
+    height: @headerH;
     width: 100%;
     z-index: @zindex-5;
     background: darken(@col__blu, 4%);
@@ -168,11 +168,11 @@ header {
 }
 .c-month {
   position: relative;
-  height: @headerH; 
+  height: @headerH;
   line-height: @headerH;
-  
 
-  
+
+
   #c-paginator {
     position: relative;
     width: 200px;
@@ -252,14 +252,14 @@ header {
   .next {
     right: 0;
     &:hover {
-      padding: 9px 14px; 
+      padding: 9px 14px;
       background-color: lighten(@col__blu, 8%);
     }
   }
 }
 
 .c-paginator__year {
-  height: @headerH; 
+  height: @headerH;
   line-height: @headerH;
   padding: 0 @mr__small;
 }
@@ -274,11 +274,11 @@ header {
   letter-spacing: @letter-spacing;
   .u-border-radius(@mr__medium/2);
   .u-transition;
-  
+
   span {
     margin-left: 10px;
   }
-  
+
   &:hover {
     background-color: lighten(@col__blu, 8%);
   }
@@ -392,14 +392,14 @@ header {
     .u-border-radius(50%);
     .u-transition.long;
   }
-  
+
   //responsive square
   &::before{
     content: "";
     display: block;
     padding-top: 100%;
   }
-  
+
   //weekend color
    &:nth-child(1) {
      p {
@@ -411,15 +411,15 @@ header {
         background: darken(@col__blu, 2%);
      }
   }
- 
-  
+
+
   &:hover {
     background-color: lighten(@col__blu, 4%)!important;
       p {
         background: darken(@col__blu, 2%)!important;
      }
   }
-  
+
   //on click
   &.isSelected {
     background-color: lighten(@col__blu, 4%);
@@ -455,7 +455,7 @@ header {
     .u-border-radius(50%);
     .u-transform(translate(-50%, calc(50% ~"+" @mr__small/2)));
   }
-  
+
   &--birthday {
     &:before {
       background-color: @col__yellow;
@@ -465,7 +465,7 @@ header {
      &:before {
       background-color: @col__green;
     }
-    
+
   }
   &--important {
      &:before {
@@ -490,7 +490,7 @@ header {
   position: relative;
   padding-left: @mr__small;
   margin: @mr__small 0;
- 
+
   &:before {
     position: absolute;
     display: block;
@@ -509,7 +509,7 @@ header {
   &--festivity {
     &:before {
       background-color: @col__green;
-    }    
+    }
   }
   &--important {
     &:before {
@@ -534,13 +534,13 @@ header {
   .u-border-box;
   .u-transform(translate(-50%, -50%)scale(0.9));
 
-  form { 
+  form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
   }
-  
+
   &.isVisible {
       .u-transform(translate(-50%, -50%)scale(1));
     opacity: 1;
