@@ -17,7 +17,6 @@
 
             </div>
         </div>
-
     </div>
 
 </section>
@@ -26,84 +25,86 @@
 <!--skills-->
 <section class="specialties" id="specialties">
     <div class="container">
-        <div class="heading center">
-            <h2>Nuestras Habilidades</h2>
-
+        <div class="row">
+            <div class="col-12">
+                <div class="heading center">
+                    <h2>Nuestras Habilidades</h2>
+                </div>
+            </div>
         </div>
-    </div>
+       <div class="row">
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s ">
+               <img src="img/team/17.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/7.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/8.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/9.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/10.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
 
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/11.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
 
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/20.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
 
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s ">
-        <img src="img/team/17.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/7.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/8.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/9.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/10.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/13.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
 
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/11.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
+           </div>
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/14.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
 
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/20.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/15.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
 
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/13.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/18.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
 
-    </div>
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/14.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/17.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
 
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/15.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/16.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
 
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/18.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/19.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
 
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/17.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
+           </div>
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/12.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
 
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/16.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/21.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
 
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/19.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/22.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
 
-    </div>
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/12.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
-
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/21.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
-
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/22.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
-
-    <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
-        <img src="img/team/6.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
-    </div>
-    <div class="restitem clearfix">
-        <div class="rm-thumb" style="background-image:">
-        </div>
+           <div class="col-md-3 wow fadeInRight " data-wow-offset="0 " data-wow-delay="0.6s">
+               <img src="img/team/6.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+           </div>
+           <div class="restitem clearfix">
+               {{--        <div class="rm-thumb" style="background-image">--}}
+               {{--        </div>--}}
+           </div>
+       </div>
     </div>
 </section>
 
@@ -267,10 +268,6 @@
         <!-- // grid-gallery -->
     </div>
 </section>
-
-</section>
-
-
 @endsection
 
 @section('scripts')
