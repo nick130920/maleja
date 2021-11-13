@@ -6,14 +6,10 @@
   </head>
   <body>
   		@include('layouts.partials.navbar')
+		@yield('content')
 
-		@section('content')
-
-	 	@show
-  
    		@include('layouts.partials.footer')
    		@include('layouts.partials.scripts')
-   		@section('scripts')
-   		@show
-   </body>
+   		@stack('scripts')
+  </body>
 </html>
