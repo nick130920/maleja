@@ -32136,6 +32136,13 @@ select {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.bg-login{
+  background-image: url(/images/fondolegal.jpg?e1c7935a7673532261a955b2f206f03e);
+  background-repeat: no-repeat;
+  background-size: 100% 90%;
+  background-position: center;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

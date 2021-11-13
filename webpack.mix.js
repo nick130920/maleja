@@ -17,3 +17,8 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('tailwindcss'),
     ]);
+mix.browserSync({
+    //coloca tu url local
+    proxy: 'http://maleja.test:8888'
+});
+mix.disableNotifications();
