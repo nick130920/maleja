@@ -2,21 +2,127 @@
 
 @push("scripts")
     <!--Scripts Calendario-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="{{ asset('css/calendar.css') }}">
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="{{ asset('js/es-ES.js') }}"></script>
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/moment.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    {{-- <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet"> --}}
+    {{-- <script type="text/javascript" src="{{ asset('js/es-ES.js') }}"></script> --}}
+
     <!--Scripts Calendario-->
 @endpush
 
 @section("content")
-<!--Section Calendario-->
+
+<section>
     <div class="container">
         <div class="row">
+            <div class="col-md-12">
+                <div class="content w-100">
+                <div class="calendar-container">
+                  <div class="calendar">
+                    <div class="year-header">
+                      <span class="left-button fa fa-chevron-left" id="prev"> </span>
+                      <span class="year" id="label"></span>
+                      <span class="right-button fa fa-chevron-right" id="next"> </span>
+                    </div>
+                    <table class="months-table w-100">
+                      <tbody>
+                        <tr class="months-row">
+                          <td class="month">Jan</td>
+                          <td class="month">Feb</td>
+                          <td class="month">Mar</td>
+                          <td class="month">Apr</td>
+                          <td class="month">May</td>
+                          <td class="month">Jun</td>
+                          <td class="month">Jul</td>
+                          <td class="month">Aug</td>
+                          <td class="month">Sep</td>
+                          <td class="month">Oct</td>
+                          <td class="month">Nov</td>
+                          <td class="month">Dec</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <table class="days-table w-100">
+                      <td class="day">Sun</td>
+                      <td class="day">Mon</td>
+                      <td class="day">Tue</td>
+                      <td class="day">Wed</td>
+                      <td class="day">Thu</td>
+                      <td class="day">Fri</td>
+                      <td class="day">Sat</td>
+                    </table>
+                    <div class="frame">
+                      <table class="dates-table w-100">
+                      <tbody class="tbody">
+                      </tbody>
+                      </table>
+                    </div>
+                    <button class="button" id="add-button">Add Event</button>
+                  </div>
+                </div>
+                <div class="events-container">
+                </div>
+                <div class="dialog" id="dialog">
+                    <h2 class="dialog-header"> Add New Event </h2>
+                    <form class="form" id="form">
+                      <div class="form-container" align="center">
+                        <label class="form-label" id="valueFromMyButton" for="name">Event name</label>
+                        <input class="input" type="text" id="name" maxlength="36">
+                        <label class="form-label" id="valueFromMyButton" for="count">Number of people to invite</label>
+                        <input class="input" type="number" id="count" min="0" max="1000000" maxlength="7">
+                        <form action="{{ route('calendar') }}" method="POST">
+                            @csrf
+                            <input type='text' id="start" :value="old('start')" name="start" class="form-control" required />
+                            <br>
+                            <label for="phone_number" class="form-label">Celular</label>
+                            <input type='number' name="phone_number" :value="old('phone_number')" id="phone_number" class="form-control"
+                                placeholder="3124567890" />
+                            <br>
+                            <label for="class" class="form-label">Tipo servicio</label>
+                            <select class="form-select" aria-label="Default select example" name="service_id" :value="old('service_id')" required>
+                                <option></option>
+                                @foreach ($servicios as $servicio)
+                                    <option value={{ $servicio->id  }}>{{ $servicio->name  }} {{$servicio->time}}</option>
+                                @endforeach
+                                <option value="1">corte de dama</option>
+                                <option value="2">corte de niños</option>
+                                <option value="3">corte de caballeros</option>
+                                <option value="4">pedicure</option>
+                                <option value="5">manicure</option>
+                                <option value="6">Depilacion con cera </option>
+                                <option value="7">Maquillaje</option>
+                                <option value="8">Trenza</option>
+                                <option value="9">peinado niñas </option>
+                                <option value="10">peinado damas </option>
+                                <option value="11">planchados</option>
+                                <option value="12">cepillado</option>
+                                <option value="13">Keratina </option>
+                                <option value="14">Tintes</option>
+                                <option value="15">semipermanentes</option>
+                            </select>
+                            <br>
+                            <label for="title" class="form-label">Título</label>
+                            <input type="text" required :value="old('title')" name="title" class="form-control" id="title"
+                                placeholder="Introduce un título">
+                            <br>
+                            <label for="body" class="form-label">Evento</label>
+                            <textarea id="body" name="event" :value="old('event')" required class="form-control" rows="3"></textarea>
+                        <input type="button" value="Cancel" class="button" id="cancel-button">
+                        <input type="button" value="OK" class="button button-white" id="ok-button">
+                      </div>
+                    </form>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section Calendario-->
+    {{-- <div class="container"> --}}
+        {{-- <div class="row">
             <!--<div class="page-header"><h4></h4></div>-->
             <div class="float-xs-start form-inline"><br>
                 <div class="btn-group">
@@ -37,13 +143,13 @@
                 <button class="btn btn-info" data-bs-toggle='modal' data-bs-target='#add_evento'>Añadir Evento</button>
             </div>
         </div>
-        <br><br><br>
-        <div class="row">
+        <br><br><br> --}}
+        {{-- <div class="row">
             <div id="calendar"></div> <!-- Aqui se mostrara nuestro calendario -->
 
-        </div>
+        </div> --}}
         <!--ventana modal para el calendario-->
-        <div class="modal fade" id="events-modal">
+        {{-- <div class="modal fade" id="events-modal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -58,11 +164,14 @@
 
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-    </div>
+        </div><!-- /.modal --> --}}
+    {{-- </div> --}}
     <script src="{{ asset('js/underscore-min.js') }}"></script>
     <script src="{{ asset('js/calendar.js') }}"></script>
-    <script type="text/javascript">
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/moment.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    {{-- <script type="text/javascript">
         (function($){
                 //creamos la fecha actual
                 var date = new Date();
@@ -169,8 +278,8 @@
                     calendar.view();
                 });
             }(jQuery));
-    </script>
-    <div class="modal fade" id="add_evento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    </script> --}}
+    {{-- <div class="modal fade" id="add_evento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="false">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -183,7 +292,7 @@
                         <label for="start" class="form-label">Inicio</label>
                         <div class='input-group date' id='start'>
                             <input type='text' id="start" :value="old('start')" name="start" class="form-control" aria-label="Recipient" aria-describedby="basicoo" required />
-                            {{-- <span id="basic-addon2" class="input-group-addon"><span  class="glyphicon glyphicon-calendar"></span> --}}
+                            <span id="basic-addon2" class="input-group-addon"><span  class="glyphicon glyphicon-calendar"></span>
                             <span class="input-group-text" id="basicoo">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-week-fill"
                                     viewBox="0 0 16 16">
@@ -244,6 +353,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 <!--Section Calendario-->
 @endsection
