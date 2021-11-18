@@ -49,9 +49,9 @@
     @endif
     @include('layouts.nav')
     <div id="app">
-        <main class="py-4">
-            @yield('content')
-        </main>
+        @yield('content')
+        {{-- <main class="py-4">
+        </main> --}}
     </div>
 </body>
 </html>

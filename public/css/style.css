@@ -35,10 +35,14 @@ img {max-width: 100%;}
 	right:0px;
 	bottom:0;
 }
-
-.navArea {
-	/*float:right;*/
+.inicial-bottom {
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
+/* .navArea {
+	float:right;
+} */
 .navwrapper .container {
 	padding:0;
 	width:auto;
