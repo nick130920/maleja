@@ -1,55 +1,57 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm inicial-bottom sticky-top">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarCerrarse" aria-controls="navbarCerrarse" aria-expanded="false"
-            aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCerrarse"
+            aria-controls="navbarCerrarse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCerrarse">
-            <a class="navbar-brand" href="{{ url('/') }}" style="margin-left: 5vw">
+            <a class="navbar-brand" href="{{ url('/') }}" style="margin-left: 15vw">
                 {{ config('app.name', 'Inicio') }}
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
+                    <a class="nav-link" aria-current="inicio" href="#wrapper">Inicio</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" aria-current="calendar" href="{{ url('/calendar') }}">Calendario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="services" href="{{ url('/services') }}">Servicios</a>
+                    <a class="nav-link" aria-current="services" href="{{ url('/services') }}">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="contact" href="#contact">Contacto</a>
                 </li>
             </ul>
-            <ul class="d-flex justify-content-end">
-                <div class="navbar-nav">
-                    <!-- Authentication Links -->
-                    @guest
-                        @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                        @endif
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <ul class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ Auth::user()->name }}
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- Authentication Links -->
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
+                        </li>
+                    @endif
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <ul class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                        document.getElementById('logout-form').submit();">
+                                {{ __('Cerrar Sesión') }}
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Cerrar Sesión') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </ul>
-                    @endguest
-                </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </ul>
+                @endguest
             </ul>
         </div>
         {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">

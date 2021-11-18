@@ -128,6 +128,7 @@ function new_event(event) {
     // empty inputs and hide events
     $("#dialog input[type=text]").val('');
     $("#dialog input[type=number]").val('');
+
     $(".events-container").hide(250);
     $("#dialog").show(250);
     // Event handler for cancel button
@@ -182,7 +183,7 @@ function show_events(events, month, day) {
     // If there are no events for this date, notify the user
     if(events.length===0) {
         var event_card = $("<div class='event-card'></div>");
-        var event_name = $("<div class='event-name'>There are no events planned for "+month+" "+day+".</div>");
+        var event_name = $("<div class='event-name'>No hay eventos planeados para "+month+" "+day+".</div>");
         $(event_card).css({ "border-left": "10px solid #FF1744" });
         $(event_card).append(event_name);
         $(".events-container").append(event_card);
