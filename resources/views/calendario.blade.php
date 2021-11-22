@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     {{-- <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet"> --}}
     {{-- <script type="text/javascript" src="{{ asset('js/es-ES.js') }}"></script> --}}
+    <link rel="stylesheet" href="{{ asset('css/calendar.css') }}">
+
+    
+
+    <script type="text/javascript">
+            $(function () {
+            $('#start').datetimepicker({
+                language: 'es',
+                minDate: new Date()
+            });
+        });
+        </script>
 
     <!--Scripts Calendario-->
 @endpush
@@ -166,6 +178,8 @@
     <script src="{{ asset('js/calendar.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" />
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     {{-- <script type="text/javascript">
         (function($){
@@ -332,14 +346,7 @@
                         <br>
                         <label for="body" class="form-label">Evento</label>
                         <textarea id="body" name="event" :value="old('event')" required class="form-control" rows="3"></textarea>
-                        <script type="text/javascript">
-                            $(function () {
-                            $('#start').datetimepicker({
-                                language: 'es',
-                                minDate: new Date()
-                            });
-                        });
-                        </script>
+                        
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa fa-times"></i>

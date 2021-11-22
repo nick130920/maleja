@@ -5,12 +5,16 @@
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+               
                 <li class="nav-item">
                     <a class="nav-link" aria-current="calendar" href="{{ url('/calendar') }}">Calendario</a>
                   </li>
+                   @if( Auth::check() && Auth::user()->rol == "admin")
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="services" href="{{ url('/services') }}">Servicios</a>
                 </li>
+                 @else
+                @endif
             </ul>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

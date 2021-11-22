@@ -16,6 +16,7 @@
 
                     {{ __('Te has logueado!') }}
                     <div class="row justify-content-center">
+                         @if( Auth::check() && Auth::user()->rol == "admin")
                         <div class="col-md-4">
                             <a class="text-reset text-decoration-none hover-up" href="{{ url('/services') }}">
                                 <div class="card">
@@ -26,6 +27,8 @@
                                 </div>
                             </a>
                         </div>
+                        @else
+                        @endif
                         <div class="col-md-4">
                             <a class="text-reset text-decoration-none hover-up" href="{{ url('/calendar') }}">
                                 <div class="card">

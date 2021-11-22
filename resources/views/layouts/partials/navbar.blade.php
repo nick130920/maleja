@@ -12,12 +12,17 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="inicio" href="#wrapper">Inicio</a>
                 </li>
+                
                 <li class="nav-item">
                     <a class="nav-link" aria-current="calendar" href="{{ url('/calendar') }}">Calendario</a>
                 </li>
+               
+                 @if( Auth::check() && Auth::user()->rol == "admin")
                 <li class="nav-item">
                     <a class="nav-link" aria-current="services" href="{{ url('/services') }}">Servicios</a>
                 </li>
+                 @else
+                @endif
                 <li class="nav-item">
                     <a class="nav-link" aria-current="contact" href="#contact">Contacto</a>
                 </li>

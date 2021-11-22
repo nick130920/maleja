@@ -12,7 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('/alertify/alertify.min.js')}}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+   
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/alertify/css/themes/semantic.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/alertify/css/alertify.min.css')}}">
     @stack("scripts")
+
 
 </head>
 <body>
@@ -53,5 +54,6 @@
         {{-- <main class="py-4">
         </main> --}}
     </div>
+
 </body>
 </html>
