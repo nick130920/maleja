@@ -18,9 +18,6 @@ class CalendarController extends Controller
 
         return view('/calendario', compact('servicios', 'citas'));
     }
-    public function prueba(){
-        return view('/simple');
-    }
 
     public function create(Request $request){
         $user_id = FacadesAuth::user()->id;

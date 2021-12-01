@@ -18,11 +18,11 @@ class CreateCalendarsTable extends Migration
             $table->string('start');
             $table->string('code');
             $table->bigInteger('phone_number');
-            $table->foreignId('service_id');
+            $table->foreignId('service_id')->constrained();
             $table->string('title');
             $table->string('body');
             $table->string('url');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->timestampsTz();
         });
     }
