@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Calendar;
 use App\Models\Service;
 
-use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Validator;
@@ -14,9 +13,13 @@ class CalendarController extends Controller
 {
     public function index(){
         $servicios = Service::all();
-        $citas = Calendar::all();
-
-        return view('/calendario', compact('servicios', 'citas'));
+        $citas = FacadesAuth::user()->calendars;
+        if ($citas) {
+            foreach($citas as $cita){
+                $cita->service;
+            }
+        }
+        return view('/calendario')->with(compact('servicios', 'citas'));
     }
 
     public function create(Request $request){

@@ -4,6 +4,9 @@
 
 	// Configurar el calendario con la fecha actual
 $(document).ready(function(){
+    $("#form-posponer").hide(250);
+    $("#posponer").hide(250);
+
     var date = new Date();
     var today = date.getDate();
     // Establecer controladores de clic para elementos DOM
@@ -13,14 +16,37 @@ $(document).ready(function(){
     $("#add-button").click({date: date}, new_event);
     // Establecer el mes actual como activo
     $(".months-row").children().eq(date.getMonth()).addClass("active-month");
-    init_calendar(date);
     var events = check_events(today, date.getMonth()+1, date.getFullYear());
+
+
+    // Agrega un evento json a event_data
+    console.log(eventos);
+    console.log(eventos[0].service);
+
+    var titulo = eventos[0].title;
+    var fecha = new Date(eventos[0].start);
+    var servicio = eventos[0].service;
+    var dia = 13;
+    // Validación de formulario básico
+    if(titulo.length === 0) {
+        window.onload = function alerta() {
+            alertify.set('notifier','position', 'top-right');
+            alertify.notify ("Ti",'success', 4, function(){});
+        };
+    }
+    else {
+        new_event_json(titulo, servicio, fecha, dia);
+        init_calendar(fecha);
+    }
+    init_calendar(date);
     show_events(events, months[date.getMonth()], today);
 });
 
 // Inicialice el calendario agregando las fechas HTML
 function init_calendar(date) {
+    $(".hidden").append($("#form-posponer")).append($("#posponer"));
     $(".tbody").empty();
+
     $(".events-container").empty();
     var calendar_days = $(".tbody");
     var month = date.getMonth();
@@ -161,32 +187,28 @@ function new_event(event) {
         }
     });
 }
-// $.ajax({
-//     type: "GET",
-//     url: ruta,
-//     dataType: "JSON",
-//     success: function(respu){
-//     }
-// });
 
-// Agrega un evento json a event_data
+
 function new_event_json(name, count, date, day) {
     var event = {
         "occasion": name,
-        "invited_count": count,
+        "service": count,
         "year": date.getFullYear(),
         "month": date.getMonth()+1,
         "day": day
     };
+    console.log(event_data["events"]);
+
     event_data["events"].push(event);
 }
 
 // Mostrar todos los eventos de la fecha seleccionada en vistas de tarjeta
 function show_events(events, month, day) {
+    $(".hidden").append($("#form-posponer")).append($("#posponer"));
     // Limpiar el contenedor de fechas
     $(".events-container").empty();
     $(".events-container").show(250);
-    console.log(event_data["events"]);
+
     // Si no hay eventos para esta fecha, notifique al usuario
     if(events.length===0) {
         var event_card = $("<div class='event-card'></div>");
@@ -198,17 +220,32 @@ function show_events(events, month, day) {
     else {
         // Revise y agregue cada evento como una tarjeta al contenedor de eventos
         for(var i=0; i<events.length; i++) {
+            console.log(events[i]);
+            if (events[i].service === undefined) {
+                var event_count = $("<div class='event-count'>"+events[i]["service"]+" No existe el servicio </div>");
+            }else{
+                var servicio = events[i].service;
+                var event_count = $("<div class='event-count'>"+servicio.id+" "+ servicio.name +"</div>");
+            }
             var event_card = $("<div class='event-card'></div>");
             var event_name = $("<div class='event-name'>"+events[i]["occasion"]+":</div>");
-            var event_count = $("<div class='event-count'>"+events[i]["invited_count"]+" Invited</div>");
+            var event_posponer = $("#posponer").show(250);
+            var input_date = $("<input type='datetime-local' value='"+events[i].year+events[i].month+events[i].day+"' id='start' :value='old('start')' name='start' class='input bg-info' style='margin-bottom: 10px' required />");
             if(events[i]["cancelled"]===true) {
                 $(event_card).css({
                     "border-left": "10px solid #FF1744"
                 });
                 event_count = $("<div class='event-cancelled'>Cancelled</div>");
             }
-            $(event_card).append(event_name).append(event_count);
+            $(event_card).append(event_name).append(event_count, event_posponer, );
+
             $(".events-container").append(event_card);
+
+            $( "#posponer" ).click({input_date: input_date, event_card: event_card } ,function() {
+                $("#form-posponer").append(input_date);
+                $("#form-posponer").show(250);
+                $(event_card).append($("#form-posponer"));
+              });
         }
     }
 }
@@ -232,27 +269,27 @@ var event_data = {
     "events": [
     {
         "occasion": " Test Event",
-        "invited_count": 120,
+        "service": undefined,
         "year": 2021,
-        "month": 11,
+        "month": 12,
         "day": 11
     }
     ]
 };
 
 const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiember",
+    "Octubre",
+    "Noviembre",
+    "Diciembre"
 ];
 
 })(jQuery);

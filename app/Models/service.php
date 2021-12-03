@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Service extends Model
 {
-    
+
     static $rules = [
 		'name' => 'required',
 		'description' => 'required',
@@ -35,6 +35,14 @@ class Service extends Model
      */
     protected $fillable = ['name','description','time'];
 
+    // $service->calendars
+    public function calendar(){
+		return $this->hasMany(Calendar::class);
+	}
+
+    public function users(){
+        return $this->hasManyThrough(User::class, Calendar::class);
+    }
 
 
 }

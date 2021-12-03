@@ -10,22 +10,15 @@
     {{-- <script type="text/javascript" src="{{ asset('js/es-ES.js') }}"></script> --}}
     <link rel="stylesheet" href="{{ asset('css/calendar.css') }}">
 
-    
 
-    <script type="text/javascript">
-            $(function () {
-            $('#start').datetimepicker({
-                language: 'es',
-                minDate: new Date()
-            });
-        });
-        </script>
 
-    <!--Scripts Calendario-->
+
+<!--Scripts Calendario-->
 @endpush
-
 @section('content')
-
+    <script type="text/javascript">
+        var eventos = @json($citas);
+    </script>
     <section>
         <div class="container">
             <div class="row">
@@ -76,7 +69,13 @@
                             </div>
                         </div>
                         <div class="events-container">
+
                         </div>
+                        <div class="hidden">
+                            <form id="form-posponer" class="formulario_posponer" action='{{ route('calendar') }}' method='POST'>@csrf</form>
+                            <button type='button' class='mx-4 bg-info button' id='posponer'>Posponer</button>
+                        </div>
+
                         <div class="dialog" id="dialog">
                             <h2 class="dialog-header"> Crear una cita </h2>
                             <div class="form-container" align="center" style="margin-top: 0">
@@ -86,8 +85,9 @@
                                     <input type="text" required :value="old('title')" name="title" class="input" style="margin-bottom: 10px"
                                         id="title">
                                     <label class="form-label" id="valueFromMyButton" for="count">Inicio</label>
-                                    <input type='text' id="start" :value="old('start')" name="start" class="input" style="margin-bottom: 10px"
-                                        required />
+                                    <input type='datetime-local' min="2018-01-01" max="2200-12-31" value="2021-09-13" id="start" :value="old('start')" name="start"
+                                        class="input" style="margin-bottom: 10px" required />
+
                                     <label for="phone_number" class="form-label">Celular</label>
                                     <input type='number' name="phone_number" :value="old('phone_number')" id="phone_number"
                                         class="input" style="margin-bottom: 10px" placeholder="3124567890" />
@@ -99,8 +99,6 @@
                                             <option style="color: #999" value={{ $servicio->id }}>{{ $servicio->name }}
                                                 {{ $servicio->time }}</option>
                                         @endforeach
-                                        <option style="color: #999" value="1">corte de dama</option>
-                                        <option style="color: #999" value="2">corte de niños</option>
                                         <option style="color: #999" value="3">corte de caballeros</option>
                                         <option style="color: #999" value="4">pedicure</option>
                                         <option style="color: #999" value="5">manicure</option>
@@ -178,9 +176,25 @@
     <script src="{{ asset('js/calendar.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" />
+    {{-- <script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" /> --}}
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <style>
+        #start::-webkit-calendar-picker-indicator {
+            color: transparent;
+            background: transparent;
+            z-index: 10;
+            width: 10%
+        }
+        #start::after {
+            background: none;
+            display: block;
+            font-family: 'FontAwesome';
+            width: 1px;
+            content: '\f073';
+            position: relative;
+            right: 20px;
+        }</style>
     {{-- <script type="text/javascript">
         (function($){
                 //creamos la fecha actual
@@ -346,7 +360,7 @@
                         <br>
                         <label for="body" class="form-label">Evento</label>
                         <textarea id="body" name="event" :value="old('event')" required class="form-control" rows="3"></textarea>
-                        
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa fa-times"></i>
