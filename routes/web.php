@@ -32,7 +32,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['admin'])->prefix('/admin')->namespace('Admin')->group(function(){
     Route::get('/', 'productosController@crear')->name('crear');
     //Voy a almorzar we bye
-});
+}); 
 
 require __DIR__.'/auth.php';
 
