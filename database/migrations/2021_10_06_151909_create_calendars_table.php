@@ -15,7 +15,7 @@ class CreateCalendarsTable extends Migration
     {
         Schema::create('calendars', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('start');
+            $table->string('start');
             $table->string('code');
             $table->bigInteger('phone_number');
             $table->foreignId('service_id')->constrained();
