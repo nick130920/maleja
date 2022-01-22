@@ -25,7 +25,7 @@ class CalendarController extends Controller
     public function create(Request $request){
         $user_id = FacadesAuth::user()->id;
         $validacion = Validator::make($request->all(), [
-            'start' => ['required','date'],
+            'start' => ['required'],
             'phone_number' => ['required', 'numeric', 'max:4000000000'],
             'service_id' => ['required'],
             'title' => ['required'],
@@ -41,6 +41,9 @@ class CalendarController extends Controller
         for ($i = 0; $i < 6; $i++) $code .= $pattern[mt_rand(0, $max)];
         $calendar = new Calendar();
         $calendar->start = $request->input('start');
+        // $calendar->start = $request->input('time');
+        // $calendar->start = $request->input('month');
+        // $calendar->start = $request->input('year');
         $calendar->code = $code;
         $calendar->phone_number = $request->input('phone_number');
         $calendar->service_id = $request->input('service_id');
