@@ -25,7 +25,7 @@ $(document).ready(function(){
         console.log(eventos[0].service);
 
         var titulo = eventos[0].title;
-        var fecha = new Date(eventos[0].start);
+        // var fecha = new Date(eventos[0].start);
         var servicio = eventos[0].service;
         var dia = 13;
         // Validación de formulario básico
