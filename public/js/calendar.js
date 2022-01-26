@@ -20,26 +20,28 @@ $(document).ready(function(){
 
 
     // Agrega un evento json a event_data
-    if (eventos.length>0) {
-        console.log(eventos);
-        console.log(eventos[0].service);
+    for (let i = 0; i < eventos.length; i++) {
+            console.log(eventos[i].service);
 
-        var titulo = eventos[0].title;
-        // var fecha = new Date(eventos[0].start);
-        var servicio = eventos[0].service;
-        var dia = 13;
-        // Validación de formulario básico
-        if(titulo.length === 0) {
-            window.onload = function alerta() {
-                alertify.set('notifier','position', 'top-right');
-                alertify.notify ("Ti",'success', 4, function(){});
-            };
+            var titulo = eventos[i].title;
+            var fecha = new Date(eventos[i].start);
+            var dia = fecha.getDate();
+            var servicio = eventos[i].service;
+            console.log(fecha);
+            console.log(dia);
+
+            // Validación de formulario básico
+            if(titulo.length === i) {
+                window.onload = function alerta() {
+                    alertify.set('notifier','position', 'top-right');
+                    alertify.notify ("Ti",'success', 4, function(){});
+                };
+            }
+            else {
+                new_event_json(titulo, servicio, fecha, dia);
+                init_calendar(fecha);
+            }
         }
-        else {
-            new_event_json(titulo, servicio, fecha, dia);
-            init_calendar(fecha);
-        }
-    }
     init_calendar(date);
     show_events(events, months[date.getMonth()], today);
         
