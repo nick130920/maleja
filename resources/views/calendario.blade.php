@@ -70,7 +70,7 @@
 
                         </div>
                         <div class="hidden">
-                            <form id="form-posponer" action='{{ route('calendar') }}' method='POST'>@csrf
+                            <form id="form-posponer" action="{{ route('calendar') }}"method='POST'>@csrf
                             </form>
                             <button type='button' class='mx-4 bg-info button' id='posponer'>Posponer</button>
                         </div>
