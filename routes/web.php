@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/calendar', [CalendarController::class, 'create'])->name('calendar');
     Route::resource('/services', ServiceController::class);
     Route::resource('/producto', ProductoController::class);
+    Route::post('/producto/store', [ProductoController::class, 'store'])->name('producto.store');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
 Route::middleware(['admin'])->prefix('/admin')->namespace('Admin')->group(function(){

@@ -31,19 +31,20 @@
 
 										<th>Nombre</th>
 										<th>imagen</th>
-										<th>Tiempo</th>
-
+										
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($productos as $producto)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $loop->iteration }}</td>
 
 											<td>{{ $producto->name }}</td>
-											<td>{{ $producto->imagen }}</td>
-											<td>{{ $producto->time }}</td>
+											<td> 
+                                                <img src="/imagen/{{$producto->imagen}}" width="60%">
+                                            </td>
+											
 
                                             <td>
                                                 <form action="{{ route('producto.destroy',$producto->id) }}" method="POST">

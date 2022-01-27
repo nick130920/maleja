@@ -6,7 +6,7 @@ use App\Models\producto;
 use App\Models\Imgproductos;
 use Session;
 use Redirect;
-use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ItemCreateRequest;
 use App\Http\Requests\ItemUpdateRequest;
@@ -41,48 +41,68 @@ class ProductoController extends Controller
     }
  
     // Proceso de Creación de un Registro 
-    public function store(ItemCreateRequest $request)
+    public function store(Request $request)
     {
-        $productos= new Bicicletas;
-        $productos->nombre = $request->nombre;
-        $productos->imagenes = date('dmyHi');
-        $productos->url = Str::slug($request->nombre, '-');  // Acá generamos la URL amigable a partir del nombre y la guardamos en la Base de Datos
+
+     $request->validate([
+            'name' => 'required', 'img' => 'required|image|mimes:jpeg,png,svg|max:1024'
+        ]);
+
+         $producto = $request->all();
+
+         if($imagen = $request->file('img')) {
+             $rutaGuardarImg = 'imagen/';
+             $imagenProducto = date('YmdHis'). "." . $imagen->getClientOriginalExtension();
+             $imagen->move($rutaGuardarImg, $imagenProducto);
+             $producto['img'] = "$imagenProducto";             
+         }
+         
+         producto::create($producto);
+         return redirect()->route('producto.index');
+
+  
+}
+
+    //     $productos= new producto;
+    //     $productos->nombre = $request->name;
+    //     $productos->imagen = date('dmyHi');
+    //     // $productos->url = Str::slug($request->nombre, '-');  // Acá generamos la URL amigable a partir del nombre y la guardamos en la Base de Datos
  
-        $productos->save();
+    //     $productos->save();
  
-        $ci = $request->file('img');
+    //     $ci = $request->file('img');
  
-        // Validamos que el nombre y el formato de imagen esten presentes, tu puedes validar mas campos si deseas 
-        $this->validate($request, [
+    //     // Validamos que el nombre y el formato de imagen esten presentes, tu puedes validar mas campos si deseas 
+    //     $this->validate($request, [
  
-            'nombre' => 'required',
-            'img.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    //         'name' => 'required',
+    //         'img.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
  
-        ]);        
+    //     ]);        
  
-        // Recibimos una o varias imágenes y las guardamos en la carpeta 'uploads'
-        foreach($request->file('img') as $image)
-            {
-                $imagen = $image->getClientOriginalName();
-                $formato = $image->getClientOriginalExtension();
-                $image->move(public_path().'/uploads/', $imagen);
+    //     // Recibimos una o varias imágenes y las guardamos en la carpeta 'uploads'
+    //     foreach($request->file('img') as $image)
+    //         {
+    //             $imagen = $image->getClientOriginalName();
+    //             $formato = $image->getClientOriginalExtension();
+    //             $image->move(public_path().'/uploads/', $imagen);
  
-                // Guardamos el nombre de la imagen en la tabla 'img_bicicletas'
-                DB::table('img_productos')->insert(
-                    [
-                        'nombre' => $imagen, 
-                        'formato' => $formato,
-                        'productos_id' => $productos->id,
-                        'created_at' => date("Y-m-d H:i:s"),
-                        'updated_at' => date("Y-m-d H:i:s")
-                    ]
-                );
+    //             // Guardamos el nombre de la imagen en la tabla 'img_bicicletas'
+    //             DB::table('img_productos')->insert(
+    //                 [
+    //                     'nombre' => $imagen, 
+    //                     'formato' => $formato,
+    //                     'productos_id' => $productos->id,
+    //                     'created_at' => date("Y-m-d H:i:s"),
+    //                     'updated_at' => date("Y-m-d H:i:s")
+    //                 ]
+    //             );
  
-            }         
+    //         }         
  
-        // Redireccionamos con mensaje 
-        return redirect('admin/productos')->with('message','Guardado Satisfactoriamente !');
-    }
+    //     // Redireccionamos con mensaje 
+    //     return redirect('admin/productos')->with('message','Guardado Satisfactoriamente !');
+    // }
  
     // Leer un Registro específico (Leer)
     public function show($id)
@@ -177,10 +197,10 @@ class ProductoController extends Controller
         }    
  
         
-        // Borramos el registro de la tabla 'bicicletas'
+        // Borramos el registro de la tabla 'productos'
         productos::destroy($id); 
  
-        // Borramos las imágenes de la tabla 'img_bicicletas' 
+        // Borramos las imágenes de la tabla 'img_' 
         $productos->imagenesproductos()->delete();
  
         // Redireccionamos con mensaje 
@@ -215,7 +235,7 @@ class ProductoController extends Controller
         $productos = productos::where('id','=', $id)->firstOrFail();
  
         // Seleccionamos las imágenes por su 'id' 
-        $imagenes = productos::find($id)->imagenesbicicletas;
+        $imagenes = productos::find($id)->imagenesproductos;
  
         return view('admin/productos.detallesproducto', compact('productos', 'imagenes'));
     }

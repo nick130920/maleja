@@ -31,7 +31,7 @@
 
 										<th>Nombre</th>
 										<th>imagen</th>
-										<th>Tiempo</th>
+										
 
                                         <th></th>
                                     </tr>
@@ -43,7 +43,7 @@
 
 											<td>{{ $producto->name }}</td>
 											<td>{{ $producto->imagen }}</td>
-											<td>{{ $producto->time }}</td>
+											
 
                                             <td>
                                                 <form action="{{ route('producto.destroy',$producto->id) }}" method="POST">

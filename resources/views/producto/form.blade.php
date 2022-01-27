@@ -2,20 +2,22 @@
     <div class="box-body">
 
         <div class="form-group">
-            {{ Form::label('Nombre') }}
-            {{ Form::text('name', $productos->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+            {{ Form::label('nombre') }}
+            {{ Form::text('name', null, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'nombre']) }}
             {!! $errors->first('name', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('description') }}
-            {{ Form::text('description', $productos->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'Description']) }}
+            {{ Form::label('descripcion') }}
+            {{ Form::text('descripcion',null, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'Description']) }}
             {!! $errors->first('description', '<div class="invalid-feedback">:message</p>') !!}
         </div>
+        <br>
         <div class="form-group">
-            {{ Form::label('time') }}
-            {{ Form::text('time', $productos->time, ['class' => 'form-control' . ($errors->has('time') ? ' is-invalid' : ''), 'placeholder' => 'Time']) }}
-            {!! $errors->first('time', '<div class="invalid-feedback">:message</p>') !!}
+            {{ Form::label('imagen') }}
+            {{ Form::file('img',null, ['class' => 'form-control' . ($errors->has('imagen') ? ' is-invalid' : ''), 'placeholder' => 'img']) }}
+            {!! $errors->first('imagen', '<div class="invalid-feedback">:message</p>') !!}
         </div>
+       
 
     </div>
  
