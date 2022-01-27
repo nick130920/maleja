@@ -18,7 +18,7 @@ $(document).ready(function(){
     $(".months-row").children().eq(date.getMonth()).addClass("active-month");
     var events = check_events(today, date.getMonth()+1, date.getFullYear());
 
-
++
     // Agrega un evento json a event_data
     for (let i = 0; i < eventos.length; i++) {
             console.log(eventos[i].service);

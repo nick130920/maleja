@@ -13,6 +13,9 @@
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="services" href="{{ url('/services') }}">Servicios</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="productos" href="{{ url('/producto') }}">Productos</a>
+                </li>
                  @else
                 @endif
             </ul>

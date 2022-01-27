@@ -265,6 +265,7 @@ if (isset($_POST['from'])) {
                             <option>peinado niñas </option>
                             <option>peinado damas </option>
                             <option>planchados</option>
+
                             <option>cepillado</option>
                             <option>Keratina </option>
                             <option>Tintes</option>

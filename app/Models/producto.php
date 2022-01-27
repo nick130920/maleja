@@ -1,10 +1,10 @@
 <?php
  
-namespace App;
+namespace App\Models;
  
 use Illuminate\Database\Eloquent\Model;
  
-class productos extends Model
+class producto extends Model
 {
     // Instancio la tabla 'img_bicicletas' 
     protected $table = 'productos';
@@ -15,7 +15,7 @@ class productos extends Model
     // Relación Inversa (Opcional)
     public function imagenesprodutos()
     {
-    	return $this->belongsTo('App\Imgproductos');
+    	return $this->belongsTo('App\Models\Imgproductos');
     }
  
     
