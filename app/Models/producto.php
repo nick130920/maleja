@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
  
 class producto extends Model
 {
-    // Instancio la tabla 'img_bicicletas' 
+    // Instancio la tabla 'img_' 
     protected $table = 'productos';
     
-    // Declaro los campos que usaré de la tabla 'img_bicicletas' 
+    // Declaro los campos que usaré de la tabla 'img_' 
     protected $fillable = ['nombre', 'formato', 'productos_id'];
  
     // Relación Inversa (Opcional)
