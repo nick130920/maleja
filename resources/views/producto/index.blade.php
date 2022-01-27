@@ -37,7 +37,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($producto as $producto)
+                                    @foreach ($productos as $producto)
                                         <tr>
                                             <td>{{ ++$i }}</td>
 
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $producto->links() !!}
+            
             </div>
         </div>
     </div>

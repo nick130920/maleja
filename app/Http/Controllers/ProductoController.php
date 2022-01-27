@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
  
-use App\productos;
-use App\Imgproductos;
+use App\Models\producto;
+use App\Models\Imgproductos;
 use Session;
 use Redirect;
 use App\Http\Requests;
@@ -17,12 +17,12 @@ use Storage;
 use Illuminate\Support\Str; 
 use File; 
  
-class productosController extends Controller
+class ProductoController extends Controller
 {
     // Leer Registros (Read) 
     public function index()
     {
-        $productos = productos::select('id', 'nombre',   'imagenes', 'url')->with('imagenesproductos:nombre')->get();
+        $productos = producto::select('id', 'nombre', 'imagen')->get();
  
         //$ib = Bicicletas::find(3)->imagenesbicicletas;
  
@@ -30,14 +30,14 @@ class productosController extends Controller
  
         // $imagenes = Bicicletas::find(3)->imagenesbicicletas;
  
-        return view('admin.productos.index', compact('productos')); 
+        return view('producto.index', compact('productos')); 
     }
  
     // Crear un Registro (Create) 
-    public function crear()
+    public function create()
     {
-        $productos = productos::all();
-        return view('admin.productos.crear', compact('productos'));
+        $productos = producto::all();
+        return view('producto.crear', compact('productos'));
     }
  
     // Proceso de Creación de un Registro 
