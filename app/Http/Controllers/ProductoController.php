@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+ 
 use App\Models\producto;
 use App\Models\Imgproductos;
 use Session;
