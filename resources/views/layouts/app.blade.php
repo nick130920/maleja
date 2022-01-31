@@ -12,7 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('/alertify/alertify.min.js')}}"></script>
-   
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -39,14 +39,48 @@
         </script>
     @endif
     @if ($errors->any())
-    <script type="text/javascript">
+        <script type="text/javascript">
+            window.onload = function alerta() {
+                alertify.set('notifier','position', 'top-right');
+                @foreach ($errors->all() as $error)
+                alertify.notify ("{{ $error }}",'error', 4, function(){});
+                @endforeach
+            };
+        </script>
+    @endif
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <script type="text/javascript">
+            window.onload = function alerta() {
+            alertify.set('notifier','position', 'top-right');
+            alertify.notify ("{{ $error }}",'error', 2, function(){});
+            };
+            </script>
+        @endforeach
+    @endif
+    @if (session('recurso'))
+        <script type="text/javascript">
         window.onload = function alerta() {
             alertify.set('notifier','position', 'top-right');
-            @foreach ($errors->all() as $error)
-            alertify.notify ("{{ $error }}",'error', 4, function(){});
-            @endforeach
-        };
-    </script>
+            alertify.notify ("{{ session('recurso') }}",'success', 2, function(){});
+        }
+        </script>
+    @endif
+    @if (session('success'))
+        <script type="text/javascript">
+        window.onload = function alerta() {
+            alertify.set('notifier','position', 'top-right');
+            alertify.notify ("{{ session('success') }}",'success', 2, function(){});
+        }
+        </script>
+    @endif
+    @if (session('error'))
+        <script type="text/javascript">
+        window.onload = function alerta() {
+            alertify.set('notifier','position', 'top-right');
+            alertify.notify ("{{ session('error') }}",'error', 2, function(){});
+        }
+        </script>
     @endif
     @include('layouts.nav')
     <div id="app">

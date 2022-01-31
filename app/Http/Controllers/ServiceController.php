@@ -16,33 +16,19 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $services = Service::paginate();
 
         return view('service.index', compact('services'))
             ->with('i', (request()->input('page', 1) - 1) * $services->perPage());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+    public function create(){
         $service = new Service();
         return view('service.create', compact('service'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         request()->validate(Service::$rules);
 
         $service = Service::create($request->all());
@@ -51,41 +37,19 @@ class ServiceController extends Controller
             ->with('success', 'Servicio creado exitosamente.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
+    public function show($id){
         $service = Service::find($id);
 
         return view('service.show', compact('service'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
+    public function edit($id){
         $service = Service::find($id);
 
         return view('service.edit', compact('service'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Service $service
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Service $service)
-    {
+    public function update(Request $request, Service $service){
         request()->validate(Service::$rules);
 
         $service->update($request->all());
@@ -94,13 +58,7 @@ class ServiceController extends Controller
             ->with('success', 'Servicio actualizado exitosamente');
     }
 
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function destroy($id)
-    {
+    public function destroy($id){
         $service = Service::find($id)->delete();
 
         return redirect()->route('services.index')

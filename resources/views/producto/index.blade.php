@@ -16,7 +16,7 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('producto.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('/producto/crear') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Nuevo') }}
                                 </a>
                               </div>
@@ -31,25 +31,25 @@
 
 										<th>Nombre</th>
 										<th>imagen</th>
-										
+
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($productos as $producto)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td width="5%">{{ $loop->iteration }}</td>
 
-											<td>{{ $producto->name }}</td>
-											<td> 
-                                                <img src="/imagen/{{$producto->imagen}}" width="60%">
+											<td width="75%">{{ $producto->name }}</td>
+											<td width="5%">
+                                                <img src="{{asset('imagen/'.$producto->image) }}">
                                             </td>
-											
 
-                                            <td>
-                                                <form action="{{ route('producto.destroy',$producto->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('producto.show',$producto->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('producto.edit',$producto->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+
+                                            <td width="15%">
+                                                <form action="{{ route('/producto/destroy',$producto->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('/producto/show',$producto->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('/producto/editar',$producto->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-            
+
             </div>
         </div>
     </div>

@@ -1,35 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
- 
-use App\Models\producto;
-use App\Models\Imgproductos;
+
 use Session;
 use Redirect;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ItemCreateRequest;
-use App\Http\Requests\ItemUpdateRequest;
-use Illuminate\Support\Facades\Validator;
-use DB;
-use Input;
-use Storage;
-use Illuminate\Support\Str;
-use File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+
+use App\Models\producto;
+use App\Models\Imgproductos;
 
 class ProductoController extends Controller
 {
     // Leer Registros (Read)
     public function index()
     {
-        $productos = producto::select('id', 'nombre', 'imagen')->get();
-
-        //$ib = Bicicletas::find(3)->imagenesbicicletas;
-
-        //dd($ib);
-
-        // $imagenes = Bicicletas::find(3)->imagenesbicicletas;
-
+        $productos = producto::all();
         return view('producto.index', compact('productos'));
     }
 
@@ -43,177 +32,133 @@ class ProductoController extends Controller
     // Proceso de Creación de un Registro
     public function store(Request $request)
     {
-
-     $request->validate([
-            'name' => 'required', 'img' => 'required|image|mimes:jpeg,png,svg|max:1024'
+        $request->validate([
+            'name' => 'required',
+            'img' => 'required|image|mimes:jpeg,png,JPG,svg|max:1024'
         ]);
+        $producto = new Producto;
+        $producto->name = $request->input('name');
+        $producto->description = $request->input('description');
 
-         $producto = $request->all();
+        if ($imagen = $request->file('img')) {
+            $rutaGuardarImg = 'imagen/';
+            $imagenProducto = date('YmdHis') . "." . $imagen->getClientOriginalExtension();
+            $imagen->move($rutaGuardarImg, $imagenProducto);
+            $producto->image = $imagenProducto;
+        }
+        $producto->save();
 
-         if($imagen = $request->file('img')) {
-             $rutaGuardarImg = 'imagen/';
-             $imagenProducto = date('YmdHis'). "." . $imagen->getClientOriginalExtension();
-             $imagen->move($rutaGuardarImg, $imagenProducto);
-             $producto['img'] = "$imagenProducto";
-         }
-
-         producto::create($producto);
-         return redirect()->route('producto.index');
-
-
-}
-
-    //     $productos= new producto;
-    //     $productos->nombre = $request->name;
-    //     $productos->imagen = date('dmyHi');
-    //     // $productos->url = Str::slug($request->nombre, '-');  // Acá generamos la URL amigable a partir del nombre y la guardamos en la Base de Datos
-
-    //     $productos->save();
-
-    //     $ci = $request->file('img');
-
-    //     // Validamos que el nombre y el formato de imagen esten presentes, tu puedes validar mas campos si deseas
-    //     $this->validate($request, [
-
-    //         'name' => 'required',
-    //         'img.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-
-    //     ]);
-
-    //     // Recibimos una o varias imágenes y las guardamos en la carpeta 'uploads'
-    //     foreach($request->file('img') as $image)
-    //         {
-    //             $imagen = $image->getClientOriginalName();
-    //             $formato = $image->getClientOriginalExtension();
-    //             $image->move(public_path().'/uploads/', $imagen);
-
-    //             // Guardamos el nombre de la imagen en la tabla 'img_bicicletas'
-    //             DB::table('img_productos')->insert(
-    //                 [
-    //                     'nombre' => $imagen,
-    //                     'formato' => $formato,
-    //                     'productos_id' => $productos->id,
-    //                     'created_at' => date("Y-m-d H:i:s"),
-    //                     'updated_at' => date("Y-m-d H:i:s")
-    //                 ]
-    //             );
-
-    //         }
-
-    //     // Redireccionamos con mensaje
-    //     return redirect('admin/productos')->with('message','Guardado Satisfactoriamente !');
-    // }
+        return redirect()->route('/productos')->with('create', 'Producto creado con exito');
+    }
 
     // Leer un Registro específico (Leer)
     public function show($id)
     {
-        //
+        $producto = producto::find($id);
+        $i = 0;
+        return view('producto.show', compact('producto', 'i'));
     }
 
     //  Actualizar un registro (Update)
-    public function actualizar($id)
+    public function edit($id)
     {
-        $productos = productos::find($id);
-
-        $imagenes = productos::find($id)->imagenesproductos;
-
-        return view('admin/productos.actualizar', compact('imagenes'), ['productos' => $productos]);
+        $producto = producto::find($id);
+        $imagenes = producto::find($id)->imagenesproductos;
+        return view('producto.editar', compact('imagenes', 'producto'));
     }
 
     // Proceso de Actualización de un Registro (Update)
-    public function update(ItemUpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $productos= productos::find($id);
-        $productos->nombre = $request->nombre;
+        $producto = producto::find($id);
+        $producto->name = $request->name;
+        $producto->description = $request->description;
+        $imgAntigua = $producto->image;
+        $saved = false;
+
+        if ($imagen = $request->file('img')) {
+            $rutaGuardarImg = 'imagen/';
+            $eliminar = public_path() . '/imagen/' . $imgAntigua;
+            File::delete($eliminar);
+            $imagenProducto = date('YmdHis') . "." . $imagen->getClientOriginalExtension();
+            $imagen->move($rutaGuardarImg, $imagenProducto);
+            $producto->image = $imagenProducto;
+        }
 
 
-
-        $productos->save();
-
-        $ci = $request->file('img');
-
-        // Si la variable '$ci' no esta vacia, actualizamos el registro con las nuevas imágenes
-        if(!empty($ci)){
-
+        // Si la variable imagen' no esta vacia, actualizamos el registro con las nuevas imágenes
+        /* if (!empty($imagen)) {
             // Validamos que el nombre y el formato de imagen esten presentes, tu puedes validar mas campos si deseas
             $this->validate($request, [
-
-                'nombre' => 'required',
+                'name' => 'required',
                 'img.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-
             ]);
 
             // Recibimos una o varias imágenes y las actualizamos
-            foreach($request->file('img') as $image)
-                {
-                    $imagen = $image->getClientOriginalName();
-                    $formato = $image->getClientOriginalExtension();
-                    $image->move(public_path().'/uploads/', $imagen);
+            foreach ($request->file('img') as $image) {
+                $imagen = $image->getClientOriginalName();
+                $formato = $image->getClientOriginalExtension();
+                $image->move(public_path() . '/uploads/', $imagen);
+                $producto->image = $imagen;
+                // Actualizamos el nuevo nombre de la(s) imagen(es) en la tabla 'img_bicicletas'
+                $imagen_table = new Imgproducto;
+                $imagen_table->nombre = $imagen;
+                $imagen_table->formato = $formato;
+                $imagen_table->producto_id = $producto->id;
+                $saved = $imagen_table->save();
 
-                    // Actualizamos el nuevo nombre de la(s) imagen(es) en la tabla 'img_bicicletas'
-                    DB::table('img_bicicletas')->insert(
-                        [
-                            'nombre' => $imagen,
-                            'formato' => $formato,
-                            'productos_id' => $productos->id,
-                            'created_at' => date("Y-m-d H:i:s"),
-                            'updated_at' => date("Y-m-d H:i:s")
-                        ]
-                    );
+                // DB::table('img_bicicletas')->insert([
+                //'nombre' => $imagen,'formato' => $formato,
+                //'producto_id' => $producto->id,'created_at' => date("Y-m-d H:i:s"),
+                //'updated_at' => date("Y-m-d H:i:s")]); ESTO QUE ESTA COMENTADO ES UNA MALA PRACTICA
+            }
+        } */
+        $safe = $producto->save();
 
-                }
-
+        if ($safe && $saved) {
+            return  redirect()->route('/productos')->with('success', 'Producto con imagenes actualizado con éxito');
+        } elseif ($safe) {
+            return  redirect()->route('/productos')->with('error', 'Producto actualizado.');
+        } else {
+            return  redirect()->route('/productos')->with('error', 'Producto no actualizado.');
         }
-
-        // Redireccionamos con mensaje
-        Session::flash('message', 'Editado Satisfactoriamente !');
-        return Redirect::to('admin/productos');
     }
 
     // Eliminar un Registro
-    public function eliminar($id)
-    {
-        $productos = productos::find($id);
+    public function destroy($id){
+        $producto = producto::find($id);
 
         // Selecciono las imágenes a eliminar
-        $imagen = DB::table('img_productos')->where('productos_id', '=', $id)->get();
-        $imgfrm = $imagen->implode('nombre', ',');
-        //dd($imgfrm);
-
-        // Creamos una lista con los nombres de las imágenes separadas por coma
-        $imagenes = explode(",", $imgfrm);
+        $imagen = $producto->image;
 
         // Recorremos la lista de imágenes separadas por coma
-        foreach($imagenes as $image){
+        /* foreach ($imagenes as $image) {
 
             // Elimino la(s) imagen(es) de la carpeta 'uploads'
-            $dirimgs = public_path().'/uploads/'.$image;
+            $dirimgs = public_path() . '/uploads/' . $image;
 
             // Verificamos si la(s) imagen(es) existe(n) y procedemos a eliminar
-            if(File::exists($dirimgs)) {
+            if (File::exists($dirimgs)) {
                 File::delete($dirimgs);
             }
-
-        }
-
+        } */
+        $eliminar = public_path() . '/imagen/' . $imagen;
+        File::delete($eliminar);
 
         // Borramos el registro de la tabla 'productos'
-        productos::destroy($id);
+        producto::destroy($id);
 
         // Borramos las imágenes de la tabla 'img_'
-        $productos->imagenesproductos()->delete();
+        // $producto->imagenesproductos()->delete();
 
         // Redireccionamos con mensaje
-        Session::flash('message', 'Eliminado Satisfactoriamente !');
-        return Redirect::to('admin/productos');
+        return back()->with('success', 'Eliminado Satisfactoriamente !');;
     }
 
     // Eliminar imagen de un Registro
     public function eliminarimagen($id, $bid)
     {
         $productos = Imgproductos::find($id);
-
-        $bi = $bid;
 
         // Elimino la imagen de la carpeta 'uploads'
         $imagen = Imgproductos::select('nombre')->where('id', '=', $id)->get();
@@ -224,20 +169,18 @@ class ProductoController extends Controller
         Imgproductos::destroy($id);
 
         // Redireccionamos con mensaje
-        Session::flash('message', 'Imagen Eliminada Satisfactoriamente !');
-        return Redirect::to('admin/productos/actualizar/'.$bi.'');
+        return redirect()->route('admin/productos/actualizar/' . $bid . '')->with('success', 'Imagen Eliminada Satisfactoriamente !');
     }
 
     // Detalles del Producto
     public function detallesproducto($id)
     {
         // Seleccionar un registro por su 'id'
-        $productos = productos::where('id','=', $id)->firstOrFail();
+        $productos = producto::where('id', '=', $id)->firstOrFail();
 
         // Seleccionamos las imágenes por su 'id'
-        $imagenes = productos::find($id)->imagenesproductos;
+        $imagenes = producto::find($id)->imagenesproductos;
 
-        return view('admin/productos.detallesproducto', compact('productos', 'imagenes'));
+        return view('admin/productos.detallesproducto', compact('producto', 'imagenes'));
     }
-
 }

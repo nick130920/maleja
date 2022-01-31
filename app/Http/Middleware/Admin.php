@@ -5,8 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Admin
-{
+class Admin{
     /**
      * Handle an incoming request.
      *
@@ -20,7 +19,7 @@ class Admin
         return redirect('/login');
       }
       if (!auth()->user()->rol == "admin") {
-        return redirect('/home');
+        return redirect('/index');
       }
         return $next($request);
     }
