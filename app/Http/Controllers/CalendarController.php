@@ -41,9 +41,9 @@ class CalendarController extends Controller
         for ($i = 0; $i < 6; $i++) $code .= $pattern[mt_rand(0, $max)];
         $calendar = new Calendar();
         $calendar->start = $request->input('start');
-        // $calendar->start = $request->input('time');
-        // $calendar->start = $request->input('month');
-        // $calendar->start = $request->input('year');
+        //$calendar->time = $request->input('time');
+        //$calendar->month = $request->input('month');
+        //$calendar->year = $request->input('year');
         $calendar->code = $code;
         $calendar->phone_number = $request->input('phone_number');
         $calendar->service_id = $request->input('service_id');

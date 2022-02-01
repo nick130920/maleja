@@ -221,8 +221,10 @@
         if (events.length === 0) {
             var event_card = $("<div class='event-card'></div>");
             var event_name = $("<div class='event-name'>No hay eventos planeados para " + month + " " + day + ".</div>");
+            var event_ = $("<div class='event-count'> .</div>");
             $(event_card).css({ "border-left": "10px solid #FF1744" });
             $(event_card).append(event_name);
+            $(event_card).append(event_count);
             $(".events-container").append(event_card);
         }
         else {

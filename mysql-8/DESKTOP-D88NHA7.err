@@ -1,0 +1,6 @@
+2022-01-31T17:30:11.221032Z 0 [System] [MY-013169] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld.exe (mysqld 8.0.13) initializing of server in progress as process 8788
+2022-01-31T17:30:42.226427Z 0 [ERROR] [MY-000068] [Server] unknown option '--no-default'.
+2022-01-31T17:30:42.227710Z 0 [Warning] [MY-010952] [Server] The privilege system failed to initialize correctly. If you have upgraded your server, make sure you're executing mysql_upgrade to correct the issue.
+2022-01-31T17:30:42.230618Z 0 [ERROR] [MY-013236] [Server] Newly created data directory C:\laragon\www\maleja\mysql-8\ is unusable. You can safely remove it.
+2022-01-31T17:30:42.722204Z 0 [ERROR] [MY-010119] [Server] Aborting
+2022-01-31T17:30:44.783271Z 0 [System] [MY-010910] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld.exe: Shutdown complete (mysqld 8.0.13)  MySQL Community Server - GPL.

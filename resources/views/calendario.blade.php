@@ -85,11 +85,11 @@
                                         id="title">
                                     <label class="form-label" id="valueFromMyButton" for="count">fecha y hora</label>
 
-                                    {{-- <input type="time" name="time" id="time" class="input" style="margin-bottom: 10px" >
+                                     {{-- <input type="time" name="time" id="time" class="input" style="margin-bottom: 10px" >
                                     <input type="number" name="month" id="month" class="input" style="margin-bottom: 10px" >
-                                    <input type="number" name="year" id="year" class="input" style="margin-bottom: 10px" > --}}
+                                    <input type="number" name="year" id="year" class="input" style="margin-bottom: 10px" > --}} 
 
-                                    <input type='number' min="2022-01-01" max="2200-12-31" id="start" name="start" class="input" style="margin-bottom: 10px" required />
+                                    <input type='datetime-local' min="2022-01-01" max="2200-12-31" id="start" name="start" class="input" style="margin-bottom: 10px" required />
 
                                     <label for="phone_number" class="form-label">Celular</label>
                                     <input type='number' name="phone_number" :value="old('phone_number')" id="phone_number" class="input" style="margin-bottom: 10px" placeholder="Ejemplo: 3124567890" />
@@ -120,6 +120,7 @@
     <script src="{{ asset('js/calendar.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
+    <script src="{{ asset('js/.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <style>
         #start::-webkit-calendar-picker-indicator {
