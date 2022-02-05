@@ -141,16 +141,18 @@
                     <ul class="grid">
                         <li class="grid-sizer"></li>
                         <!-- for Masonry column width -->
+                         @foreach($products as $p)
                         <li>
                             <figure>
-                                <img src="img/work/1.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
+                                <img src="{{asset('imagen/'.$p->image) }}" class="img-responsive" style="height: 410px; width: 300px; ">
                                 <figcaption>
-                                    <h3>cera</h3>
-                                    <p>Axila boso y viquini y piernas cera depilatoria</p>
+                                    <h3>{{$p->name}}</h3>
+                                    <p>{{$p->description}}</p>
                                 </figcaption>
                             </figure>
                         </li>
-                        <li>
+                            
+                        -- <li>
                             <figure>
                                 <img src="img/work/2.jpeg" class="img-responsive" style="height: 410px; width: 300px; ">
                                 <figcaption>
@@ -219,19 +221,22 @@
                                         personal </p>
                                 </figcaption>
                             </figure>
-                        </li>
+                        </li> -->
                     </ul>
+                     @endforeach
                 </section>
                 <!-- // end small images -->
 
                 <section class="slideshow">
                     <ul>
+                       
                         <li>
                             <figure>
                                 <img src="img/work/1.jpeg" alt="" />
                             </figure>
                         </li>
-                        <li>
+                   
+                        <!-- <li>
                             <figure>
                                 <img src="img/work/2.jpeg" alt="" />
                             </figure>
@@ -267,7 +272,7 @@
                             <figure>
                                 <img src="img/work/8.jpeg" alt="" />
                             </figure>
-                        </li>
+                        </li> -->
                     </ul>
                     <div id="navbar">
                         <a class="active" href="javascript:void(0)">Home</a>

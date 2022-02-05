@@ -18,3 +18,83 @@ mysqld: Table 'mysql.plugin' doesn't exist
 2022-01-31T17:30:52.502600Z 0 [ERROR] [MY-010529] [Repl] Failed to create or recover replication info repositories.
 2022-01-31T17:30:52.503947Z 0 [System] [MY-010931] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld: ready for connections. Version: '8.0.13'  socket: ''  port: 3306  MySQL Community Server - GPL.
 2022-01-31T17:30:52.657483Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
+2022-02-01T21:30:58.357443Z 374 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.0.13).
+2022-02-01T21:30:58.358761Z 0 [System] [MY-013105] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld: Normal shutdown.
+2022-02-01T21:31:00.017589Z 0 [System] [MY-010910] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld: Shutdown complete (mysqld 8.0.13)  MySQL Community Server - GPL.
+2022-02-02T02:27:41.598172Z 0 [Warning] [MY-010097] [Server] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2022-02-02T02:27:41.598298Z 0 [System] [MY-010116] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld (mysqld 8.0.13) starting as process 7828
+mysqld: Table 'mysql.plugin' doesn't exist
+2022-02-02T02:27:59.502609Z 0 [ERROR] [MY-010735] [Server] Can't open the mysql.plugin table. Please run mysql_upgrade to create it.
+2022-02-02T02:28:01.545966Z 0 [Warning] [MY-010015] [Repl] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
+2022-02-02T02:28:03.030375Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-02-02T02:28:03.251973Z 0 [Warning] [MY-010441] [Server] Failed to open optimizer cost constant tables
+2022-02-02T02:28:03.259693Z 0 [ERROR] [MY-013129] [Server] A message intended for a client cannot be sent there as no client-session is attached. Therefore, we're sending the information to the error-log instead: MY-001146 - Table 'mysql.component' doesn't exist
+2022-02-02T02:28:03.267113Z 0 [Warning] [MY-013129] [Server] A message intended for a client cannot be sent there as no client-session is attached. Therefore, we're sending the information to the error-log instead: MY-003543 - The mysql.component table is missing or has an incorrect definition.
+2022-02-02T02:28:03.285074Z 0 [ERROR] [MY-010326] [Server] Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't exist
+2022-02-02T02:28:03.287888Z 0 [Warning] [MY-010952] [Server] The privilege system failed to initialize correctly. If you have upgraded your server, make sure you're executing mysql_upgrade to correct the issue.
+2022-02-02T02:28:03.291347Z 0 [Warning] [MY-010357] [Server] Can't open and lock time zone table: Table 'mysql.time_zone_leap_second' doesn't exist trying to live without them
+2022-02-02T02:28:03.295223Z 0 [ERROR] [MY-010353] [Server] Can't open and lock privilege tables: Table 'mysql.servers' doesn't exist
+2022-02-02T02:28:03.303445Z 0 [Warning] [MY-010405] [Repl] Info table is not ready to be used. Table 'mysql.slave_master_info' cannot be opened.
+2022-02-02T02:28:03.304671Z 0 [ERROR] [MY-010422] [Repl] Error in checking mysql.slave_master_info repository info type of TABLE.
+2022-02-02T02:28:03.305704Z 0 [ERROR] [MY-010415] [Repl] Error creating master info: Error checking repositories.
+2022-02-02T02:28:03.306598Z 0 [ERROR] [MY-010426] [Repl] Slave: Failed to initialize the master info structure for channel ''; its record may still be present in 'mysql.slave_master_info' table, consider deleting it.
+2022-02-02T02:28:03.308286Z 0 [ERROR] [MY-010529] [Repl] Failed to create or recover replication info repositories.
+2022-02-02T02:28:03.311551Z 0 [System] [MY-010931] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld: ready for connections. Version: '8.0.13'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2022-02-02T02:28:03.433190Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
+2022-02-02T02:43:08.243501Z 7 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.0.13).
+2022-02-02T02:43:08.249029Z 0 [System] [MY-013105] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld: Normal shutdown.
+2022-02-02T02:43:09.797294Z 0 [System] [MY-010910] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld: Shutdown complete (mysqld 8.0.13)  MySQL Community Server - GPL.
+2022-02-02T13:09:22.392734Z 0 [Warning] [MY-010097] [Server] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2022-02-02T13:09:22.392859Z 0 [System] [MY-010116] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld (mysqld 8.0.13) starting as process 10000
+mysqld: Table 'mysql.plugin' doesn't exist
+2022-02-02T13:09:31.893680Z 0 [ERROR] [MY-010735] [Server] Can't open the mysql.plugin table. Please run mysql_upgrade to create it.
+2022-02-02T13:09:33.854941Z 0 [Warning] [MY-010015] [Repl] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
+2022-02-02T13:09:43.652053Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-02-02T13:09:43.933044Z 0 [Warning] [MY-010441] [Server] Failed to open optimizer cost constant tables
+2022-02-02T13:09:43.940580Z 0 [ERROR] [MY-013129] [Server] A message intended for a client cannot be sent there as no client-session is attached. Therefore, we're sending the information to the error-log instead: MY-001146 - Table 'mysql.component' doesn't exist
+2022-02-02T13:09:43.947577Z 0 [Warning] [MY-013129] [Server] A message intended for a client cannot be sent there as no client-session is attached. Therefore, we're sending the information to the error-log instead: MY-003543 - The mysql.component table is missing or has an incorrect definition.
+2022-02-02T13:09:43.957980Z 0 [ERROR] [MY-010326] [Server] Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't exist
+2022-02-02T13:09:43.959957Z 0 [Warning] [MY-010952] [Server] The privilege system failed to initialize correctly. If you have upgraded your server, make sure you're executing mysql_upgrade to correct the issue.
+2022-02-02T13:09:43.963211Z 0 [Warning] [MY-010357] [Server] Can't open and lock time zone table: Table 'mysql.time_zone_leap_second' doesn't exist trying to live without them
+2022-02-02T13:09:43.968028Z 0 [ERROR] [MY-010353] [Server] Can't open and lock privilege tables: Table 'mysql.servers' doesn't exist
+2022-02-02T13:09:43.971615Z 0 [Warning] [MY-010405] [Repl] Info table is not ready to be used. Table 'mysql.slave_master_info' cannot be opened.
+2022-02-02T13:09:43.973231Z 0 [ERROR] [MY-010422] [Repl] Error in checking mysql.slave_master_info repository info type of TABLE.
+2022-02-02T13:09:43.974637Z 0 [ERROR] [MY-010415] [Repl] Error creating master info: Error checking repositories.
+2022-02-02T13:09:43.975964Z 0 [ERROR] [MY-010426] [Repl] Slave: Failed to initialize the master info structure for channel ''; its record may still be present in 'mysql.slave_master_info' table, consider deleting it.
+2022-02-02T13:09:43.979253Z 0 [ERROR] [MY-010529] [Repl] Failed to create or recover replication info repositories.
+2022-02-02T13:09:43.981571Z 0 [System] [MY-010931] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld: ready for connections. Version: '8.0.13'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2022-02-02T13:09:44.511741Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
+2022-02-02T20:01:56.966609Z 7 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.0.13).
+2022-02-02T20:01:56.972728Z 0 [System] [MY-013105] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld: Normal shutdown.
+2022-02-02T20:01:58.364291Z 0 [System] [MY-010910] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld: Shutdown complete (mysqld 8.0.13)  MySQL Community Server - GPL.
+2022-02-02T20:05:33.999627Z 0 [Warning] [MY-010097] [Server] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2022-02-02T20:05:33.999710Z 0 [System] [MY-010116] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld (mysqld 8.0.13) starting as process 7400
+mysqld: Table 'mysql.plugin' doesn't exist
+2022-02-02T20:05:37.891603Z 0 [ERROR] [MY-010735] [Server] Can't open the mysql.plugin table. Please run mysql_upgrade to create it.
+2022-02-02T20:05:38.337710Z 0 [Warning] [MY-010015] [Repl] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
+2022-02-02T20:05:39.455904Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-02-02T20:05:39.457693Z 0 [ERROR] [MY-010262] [Server] Can't start server: Bind on TCP/IP port: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+
+2022-02-02T20:05:39.473373Z 0 [ERROR] [MY-010257] [Server] Do you already have another mysqld server running on port: 3306 ?
+2022-02-02T20:05:39.476340Z 0 [ERROR] [MY-010119] [Server] Aborting
+2022-02-02T20:05:41.198621Z 0 [System] [MY-010910] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld: Shutdown complete (mysqld 8.0.13)  MySQL Community Server - GPL.
+2022-02-04T20:23:45.085011Z 0 [Warning] [MY-010097] [Server] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2022-02-04T20:23:45.098157Z 0 [System] [MY-010116] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld (mysqld 8.0.13) starting as process 11496
+mysqld: Table 'mysql.plugin' doesn't exist
+2022-02-04T20:23:50.319815Z 0 [ERROR] [MY-010735] [Server] Can't open the mysql.plugin table. Please run mysql_upgrade to create it.
+2022-02-04T20:23:51.013393Z 0 [Warning] [MY-010015] [Repl] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
+2022-02-04T20:23:52.646171Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-02-04T20:23:52.673823Z 0 [Warning] [MY-010441] [Server] Failed to open optimizer cost constant tables
+2022-02-04T20:23:52.674971Z 0 [ERROR] [MY-013129] [Server] A message intended for a client cannot be sent there as no client-session is attached. Therefore, we're sending the information to the error-log instead: MY-001146 - Table 'mysql.component' doesn't exist
+2022-02-04T20:23:52.676965Z 0 [Warning] [MY-013129] [Server] A message intended for a client cannot be sent there as no client-session is attached. Therefore, we're sending the information to the error-log instead: MY-003543 - The mysql.component table is missing or has an incorrect definition.
+2022-02-04T20:23:52.861286Z 0 [ERROR] [MY-010326] [Server] Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't exist
+2022-02-04T20:23:52.864177Z 0 [Warning] [MY-010952] [Server] The privilege system failed to initialize correctly. If you have upgraded your server, make sure you're executing mysql_upgrade to correct the issue.
+2022-02-04T20:23:52.868492Z 0 [Warning] [MY-010357] [Server] Can't open and lock time zone table: Table 'mysql.time_zone_leap_second' doesn't exist trying to live without them
+2022-02-04T20:23:52.875169Z 0 [ERROR] [MY-010353] [Server] Can't open and lock privilege tables: Table 'mysql.servers' doesn't exist
+2022-02-04T20:23:52.879344Z 0 [Warning] [MY-010405] [Repl] Info table is not ready to be used. Table 'mysql.slave_master_info' cannot be opened.
+2022-02-04T20:23:52.880991Z 0 [ERROR] [MY-010422] [Repl] Error in checking mysql.slave_master_info repository info type of TABLE.
+2022-02-04T20:23:52.882388Z 0 [ERROR] [MY-010415] [Repl] Error creating master info: Error checking repositories.
+2022-02-04T20:23:52.883613Z 0 [ERROR] [MY-010426] [Repl] Slave: Failed to initialize the master info structure for channel ''; its record may still be present in 'mysql.slave_master_info' table, consider deleting it.
+2022-02-04T20:23:52.885771Z 0 [ERROR] [MY-010529] [Repl] Failed to create or recover replication info repositories.
+2022-02-04T20:23:52.887423Z 0 [System] [MY-010931] [Server] C:\laragon\bin\mysql\mysql-8.0.13-winx64\bin\mysqld: ready for connections. Version: '8.0.13'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2022-02-04T20:23:52.985865Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060

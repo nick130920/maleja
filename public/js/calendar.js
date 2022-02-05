@@ -28,7 +28,11 @@
                 var titulo = eventos[i].title;
                 var fecha = new Date(eventos[i].start);
                 var dia = fecha.getDate();
+               var time = fecha.getHours();
+
                 var servicio = eventos[i].service;
+
+                 console.log(time);
                 console.log(fecha);
                 console.log(dia);
 
@@ -235,7 +239,7 @@
                     var event_count = $("<div class='event-count'>" + events[i]["service"] + " No existe el servicio </div>");
                 } else {
                     var servicio = events[i].service;
-                    var event_count = $("<div class='event-count'>" + servicio.id + " " + servicio.name + "</div>");
+                    var event_count = $("<div class='event-count'>" + servicio.id + " " + servicio.name + " " + servicio.time + "</div>");
                 }
                 var event_card = $("<div class='event-card'></div>");
                 var event_name = $("<div class='event-name'>" + events[i]["occasion"] + ":</div>");
