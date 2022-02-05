@@ -19,7 +19,14 @@
                
                  @if( Auth::check() && Auth::user()->rol == "admin")
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="services" href="{{ url('/services') }}">Servicios</a>
+                    <a class="nav-link" aria-current="services" href="{{ url('/admin/services') }}">Servicios</a>
+                </li>
+                 @else
+                @endif
+
+                  @if( Auth::check() && Auth::user()->rol == "admin")
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="Productos" href="{{ url('/admin/productos') }}">productos</a>
                 </li>
                  @else
                 @endif
